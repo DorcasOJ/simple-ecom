@@ -4,7 +4,7 @@ import type { TextInputProps } from "../../../types/inputBox"
 
 
 
-const TextInput = ({ form, type, placeholder, name, icon, maxLength, minLength, minChar, maxChar, required }: TextInputProps) => {
+const TextInput = ({ form, type, placeholder, name, icon, maxLength, minLength, minChar, maxChar }: TextInputProps) => {
     return (
         <div className='w-full'>
             <label className={`input validator border border-base-content/30 text-base-content w-full h-13 focus-within:outline-0 focus-within:border-1 focus-within:border-accent md:text-lg ${form.formState.errors?.[name] ? "border-error" : "border-accent "}`} >
@@ -39,9 +39,9 @@ const TextInput = ({ form, type, placeholder, name, icon, maxLength, minLength, 
                 errors={form.formState.errors}
                 name={name}
                 render={({ message }) => (
-                    <p className="text-sm text-center justify-center text-destructive mt-2 flex text-error ">
+                    <p className="text-sm text-center justify-center text-destructive mt-2 flex text-error items-center gap-1">
                         <span className=" ">
-                            <Info size={"18px"} />
+                            <Info size={"14px"} />
                         </span>
                         {message}
                     </p>

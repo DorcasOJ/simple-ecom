@@ -29,3 +29,21 @@ export type ButtonProps = {
   actionWord: string;
   handleOnclick?: () => void;
 };
+
+export type TermInputProps = {
+  form: any;
+  name: string;
+};
+
+export type PasswordInputProp = {
+  form: any;
+  placeholder: string;
+  name?: string;
+};
+
+export type ConfirmPasswordInputProp = {
+  form: any;
+  placeholder: string;
+  name?: string;
+  password: string;
+};

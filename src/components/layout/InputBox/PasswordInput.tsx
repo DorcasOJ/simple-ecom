@@ -1,20 +1,17 @@
-import { ErrorMessage } from "@hookform/error-message"
-import { Eye, EyeOffIcon, Info, KeyRound } from "lucide-react"
+
+import type { PasswordInputProp } from "@src/types/auth"
+import { Eye, EyeOffIcon, KeyRound } from "lucide-react"
 import { useState } from "react"
 
 
-export type PasswordInputProp = {
-    form: any,
-    placeholder: string,
-    name: string
-}
-const PasswordInput = ({ form, placeholder, name }: PasswordInputProp) => {
+
+const PasswordInput = ({ form, placeholder }: PasswordInputProp) => {
     const [showPassword, setShowPassword] = useState(false)
     return (
         <div className='relative '>
 
             <div className="relative flex">
-                <label className={`input validator border border-base-content/30 text-base-content w-full h-13 focus-within:outline-0 focus-within:border-1 focus-within:border-accent md:text-lg ${form.formState.errors?.[name] ? "border-error" : "border-accent "}`}>
+                <label className={`input validator border border-base-content/30 text-base-content w-full h-13 focus-within:outline-0 focus-within:border-1 focus-within:border-accent md:text-lg ${form.formState.errors?.password ? "border-error" : "border-accent "}`}>
                     <KeyRound size={"23px"} className='text-base-content' />
                     <input
                         {...form.register("password", {
@@ -26,7 +23,7 @@ const PasswordInput = ({ form, placeholder, name }: PasswordInputProp) => {
                                     "Must contain at least 6 characters, including uppercase, lowercase, number, and special character.",
                             },
                             minLength: {
-                                value: 5,
+                                value: 7,
                                 message: "Password must be at least 6 alphanumeric",
                             },
                         })}
@@ -57,20 +54,6 @@ const PasswordInput = ({ form, placeholder, name }: PasswordInputProp) => {
                     )}
                 </div>
             </div>
-
-            <ErrorMessage
-                errors={form.formState.errors}
-                name={name}
-                render={({ message }) => (
-                    <p className="text-sm text-center justify-center text-destructive mt-2 flex text-error ">
-                        <span className=" ">
-                            <Info size={"18px"} />
-                        </span>
-                        {message}
-                    </p>
-                )}
-            />
-
         </div>
     )
 }
