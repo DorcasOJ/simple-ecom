@@ -69,7 +69,7 @@ const Login = () => {
                         <div className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-r-2xl lg:rounded-l-none h-full sm:px-6 shadow-sm  shadow-neutral/5 '>
                             <AuthLogo />
 
-                            <div className='text-xl font-["Sora"] text-base-content'> User Login</div>
+                            <div className='text-xl font-["Sora"] text-base-content'> Login</div>
                             <form
                                 onSubmit={form.handleSubmit(handleLogin)}
                                 className="w-[100%] max-w-lg space-y-4 "

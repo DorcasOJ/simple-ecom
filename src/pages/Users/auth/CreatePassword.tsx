@@ -1,10 +1,9 @@
 
 import SendButton from '@src/components/layout/InputBox/SendButton';
-import useSystemTheme from '@src/hook/useSystemTheme';
 import { ROUTES } from '@src/routes';
 import { Info, X } from 'lucide-react';
 import Container from '@src/components/Container';
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -60,7 +59,7 @@ const CreatePassword = () => {
                     <div className='w-full h-full flex flex-row-reverse items-center justify-center  rounded-2xl '>
                         <div className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-2xl h-full sm:px-6 max-w-xl lg:shadow-sm shadow-amber-50/15'>
 
-                            <AuthLogo darkTheme={darkTheme} />
+                            <AuthLogo />
 
 
                             <div className='text-xl font-["Sora"] text-base-content'> Create Password</div>

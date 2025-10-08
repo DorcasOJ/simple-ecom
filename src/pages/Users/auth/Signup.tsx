@@ -74,7 +74,7 @@ const Signup = () => {
 
                             <AuthLogo />
 
-                            <div className='text-xl font-["Sora"] text-base-content'> User Signup</div>
+                            <div className='text-xl font-["Sora"] text-base-content'> Signup</div>
                             <form
                                 onSubmit={form.handleSubmit(handleSignup)}
                                 className="w-[100%] max-w-lg space-y-4 "

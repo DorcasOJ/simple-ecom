@@ -1,0 +1,56 @@
+[
+  {
+    "id": 54322,
+    "store": "FreshMart Grocery",
+    "items": 2,
+    "price": "₦3,550.99",
+    "delivered": "19 hours ago",
+    "status": "Delivered",
+    "image": "/images/freshmart.png"
+  },
+  {
+    "id": 54323,
+    "store": "FreshMart Grocery",
+    "items": 2,
+    "price": "₦3,550.99",
+    "delivered": "10 hours ago",
+    "status": "Delivered",
+    "image": "/images/freshmart.png"
+  },
+  {
+    "id": 54324,
+    "store": "FreshMart Grocery",
+    "items": 2,
+    "price": "₦3,550.99",
+    "delivered": "9 hours ago",
+    "status": "Delivered",
+    "image": "/images/freshmart.png"
+  },
+  {
+    "id": 54325,
+    "store": "FreshMart Grocery",
+    "items": 2,
+    "price": "₦3,550.99",
+    "delivered": "19 hours ago",
+    "status": "Delivered",
+    "image": "/images/freshmart.png"
+  },
+  {
+    "id": 54326,
+    "store": "FreshMart Grocery",
+    "items": 2,
+    "price": "₦3,550.99",
+    "delivered": "9 hours ago",
+    "status": "Delivered",
+    "image": "/images/freshmart.png"
+  },
+  {
+    "id": 54327,
+    "store": "FreshMart Grocery",
+    "items": 2,
+    "price": "₦3,550.99",
+    "delivered": "10 hours ago",
+    "status": "Delivered",
+    "image": "/images/freshmart.png"
+  }
+]

@@ -1,11 +1,12 @@
 
 import ThemeButton from './ThemeButton'
-import { EllipsisVertical } from 'lucide-react'
+import { Bell, EllipsisVertical, ShoppingCart, User } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../routes'
 import { useEffect, useState } from 'react'
 import useSystemTheme from '@src/hook/useSystemTheme'
 import { logoHorinzontalDark, logoHorinzontalLight } from '@src/assets'
+import SearchBox from './InputBox/SearchBox'
 
 export type NavbarProps = {
   page: undefined | "landing" | "auth"
@@ -30,7 +31,9 @@ const Navbar = ({ page = undefined }: NavbarProps) => {
 
 
         <div className={`w-full mx-auto text-black dark:text-white relative ${page === "landing" ? "px-4 sm:px-8 max-w-[2100px]" : "px-0 w-full"}`}>
-          <div className={`w-full items-center flex p-5 ${page === "landing" ? "backdrop-blur-sm rounded-full bg-white/10 mt-3" : "rounded-0 text-base-content shadow shadow-gray-400 dark:shadow-neutral-500"}  `}>
+
+          <div className={`w-full items-center justify-between flex p-5 ${page === "landing" ? "backdrop-blur-sm rounded-full bg-white/10 mt-3" : " rounded-0 text-base-content shadow shadow-gray-400 bg-base-100 dark:shadow-neutral-500"}  `}>
+
             <div className='flex items-end-safe gap-x-3  '>
               {/* <div>
                 <div className='h-10 w-10 lg:h-13 lg:w-12 flex '>
@@ -44,7 +47,7 @@ const Navbar = ({ page = undefined }: NavbarProps) => {
                 </Link>
               </div> */}
 
-              <div className='w-[100px]'>
+              <div className={`w-[100px] ${page !== "landing" && "ms-10  sm:ms-16"}`}>
                 <Link to={ROUTES.LANDING}>
                   <img src={logoHorinzontalDark} alt="SendMe" />
                 </Link>
@@ -54,7 +57,7 @@ const Navbar = ({ page = undefined }: NavbarProps) => {
 
             </div>
 
-            {(page === 'landing' || page === 'auth') &&
+            {page === 'landing' ?
 
               (<div className='ml-auto flex gap-x-4'>
                 <ThemeButton />
@@ -63,6 +66,38 @@ const Navbar = ({ page = undefined }: NavbarProps) => {
                 </span>
 
               </div>)
+
+              :
+
+              (
+                <>
+                  <div className=' hidden md:flex '>
+                    <SearchBox />
+                  </div>
+                  <div className='flex items-center justify-center gap-x-2 sm:gap-x-5 pe-0 sm:pe-8'>
+                    <Link to={ROUTES.LANDING}>
+                      <span className='btn btn-circle btn-ghost text-base-content'>
+                        <Bell size={"20px"} />
+                      </span>
+                    </Link>
+
+                    <Link to={ROUTES.LANDING}>
+                      <span className='btn btn-circle btn-ghost text-base-content'>
+                        <ShoppingCart size={"20px"} />
+                      </span>
+                    </Link>
+
+                    <Link to={ROUTES.LANDING}>
+                      <span className='btn btn-circle btn-ghost text-base-content'>
+                        <User size={"20px"} />
+                      </span>
+                    </Link>
+
+                  </div>
+                </>
+
+              )
+
             }
           </div>
           {/* <div className='w-full flex sm:hidden'>
