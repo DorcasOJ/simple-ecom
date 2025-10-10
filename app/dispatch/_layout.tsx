@@ -1,7 +1,7 @@
 // app/(user)/_layout.tsx
 import { Stack } from "expo-router";
 
-export default function UserLayout() {
+export default function DispatchLayout() {
   return (
     <Stack
       screenOptions={{

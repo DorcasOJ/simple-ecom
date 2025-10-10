@@ -1,14 +1,13 @@
 'use dom';
-import { logo } from "@assets/images";
-/* eslint-disable import/no-unresolved */
+import SearchBox from "@components/inputBox/SearchBox";
 
 import { ROUTES } from "@constants/routes";
 import usePreloadAssets from "@hooks/usePreloadAssets";
 
 import "@styles/global.css";
 import { Link } from "expo-router";
-/* eslint-enable import/no-unresolved */
-import { Bell, EllipsisVertical, Search, ShoppingCart, User } from "lucide-react-native";
+
+import { Bell, EllipsisVertical, ShoppingCart, User } from "lucide-react-native";
 
 
 export type NavbarProps = {
@@ -16,14 +15,16 @@ export type NavbarProps = {
 }
 
 const Navbar = ({ page = undefined }: NavbarProps) => {
-    const isImageLoaded = usePreloadAssets([logo.dark])
-    console.log(logo)
+
+    const isImageLoaded = usePreloadAssets([require("@/assets/images/auth/logo.png")]);
+
     return (
 
         <div className='w-full'>
             <div className='fixed w-full top-0 z-30 '>
 
-                {/* <img src="require('../../assets/images/logo-vertical.png')" alt="" /> */}
+                {/* < Image source={require('../../../assets/images/auth/auth-side-img-1.png')} className='w-full h-full rouneded-l-2xl object-contain'
+                    /> */}
 
                 <div className={`w-full mx-auto text-black dark:text-white relative ${page === "landing" ? "px-4 sm:px-8 max-w-[2100px]" : "px-0 w-full"}`}>
 
@@ -37,7 +38,8 @@ const Navbar = ({ page = undefined }: NavbarProps) => {
                                     <span className="font-['charm'] text-lg">SendMe</span>
                                     :
                                     <Link href={ROUTES.LANDING}>
-                                        <img src={logo} alt="" className="w-full h-full border" />
+                                        <img src="require('../../assets/images/auth/logo.png')" alt="" />
+
                                     </Link>}
 
                             </div>
@@ -59,7 +61,7 @@ const Navbar = ({ page = undefined }: NavbarProps) => {
                             (
                                 <>
                                     <div className=' hidden md:flex '>
-                                        <Search />
+                                        <SearchBox />
                                     </div>
                                     <div className='flex items-center justify-center gap-x-2 sm:gap-x-5 pe-0 sm:pe-8'>
                                         <Link href={ROUTES.LANDING}>

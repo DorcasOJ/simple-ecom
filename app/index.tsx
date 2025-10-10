@@ -1,5 +1,5 @@
 'use dom';
-// eslint-disable-next-line import/no-unresolved
+
 import "@styles/global.css";
 import { Platform, ScrollView } from "react-native";
 import Landing from "./Landing";
@@ -32,9 +32,9 @@ export default function index() {
       {/* Call to Action Buttons */}
       {/* <View style={{ $$css: true, _:gap-4">
         <Button title="Shop Now" onPress={() => router.push("/(user)/auth/login")} />
-        <Button title="Dispatch Login" onPress={() => router.push("/(dispatch)/auth/login")} />
-        <Button title="Admin Login" onPress={() => router.push("/(admin)/auth/login")} />
-        <Button title="Customer Service" onPress={() => router.push("/(customerService)/auth/login")} />
+        <Button title="Dispatch Login" onPress={() => router.push("/dispatch/auth/login")} />
+        <Button title="Admin Login" onPress={() => router.push("/admin/auth/login")} />
+        <Button title="Customer Service" onPress={() => router.push("/customerService/auth/login")} />
       </View> */}
 
       {/* <View style={{ $$css: true, _: "mt - 12 items- center" }}>

@@ -5,6 +5,8 @@ export default function UserAuthLayout() {
         <Stack screenOptions={{ headerShown: false }}>
             <Stack.Screen name="login" />
             <Stack.Screen name="register" />
+            <Stack.Screen name="forgetPassword" />
+            <Stack.Screen name="createPassword" />
         </Stack>
     );
 }

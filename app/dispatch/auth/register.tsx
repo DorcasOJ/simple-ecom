@@ -147,7 +147,7 @@ const Signup = () => {
 
 
                                 <span className="flex justify-center  ">
-                                    <Link href={"/(user)/auth/login"}>
+                                    <Link href={"/dispatch/auth/login"}>
                                         <span className='text-center text-sm text-base-content/50 hover:underline'>Have an account?  Login</span>
                                     </Link>
                                 </span>

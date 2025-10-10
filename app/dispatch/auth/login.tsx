@@ -65,7 +65,7 @@ const Login = () => {
                 />
               </div>
 
-              <div className='text-xl font-["Sora"] text-base-content'> Login</div>
+              <div className='text-xl font-["Sora"] text-base-content'>Dispatch Login</div>
               <form
                 onSubmit={form.handleSubmit(handleLogin)}
                 className="w-[100%] max-w-lg space-y-4 "
@@ -93,7 +93,7 @@ const Login = () => {
 
 
                 <span className=" flex justify-end">
-                  <Link className="text-sm text-white/50 dark:text-white/50  underline" href="/(user)/auth/forgetPassword">
+                  <Link className="text-sm text-white/50 dark:text-white/50  underline" href="/dispatch/auth/forgetPassword">
                     Forgot Password
                   </Link>
                 </span>
@@ -102,13 +102,13 @@ const Login = () => {
                 <SendButton isLoading={buttonLoading} actionWord="Login" handleSubmit={handleLogin} />
 
                 <span className="flex justify-center ">
-                  <Link href="/(user)/auth/register">
+                  <Link href="/dispatch/auth/register">
                     <span className='text-center text-sm text-white/50 hover:underline'>Don't have an account?  Register</span>
                   </Link>
                 </span>
 
                 <span className="flex justify-center ">
-                  <Link href="/(user)/auth/register">
+                  <Link href="/dispatch/auth/register">
                     <span className='text-center text-white/50  text-sm hover:underline'>Go Back</span>
                   </Link>
                 </span>

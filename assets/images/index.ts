@@ -5,11 +5,11 @@
 //   dark: require("./auth/logo-vertical-dark.png"),
 //   light: require("./auth/logo-vertical.png"),
 // };
-const logo = require("./auth/logo-vertical.png");
-const landingImages = require("./landing-page/hero.png");
+// const logo = require("./auth/logo.png");
+// const landingImage = require("./landing-page/hero.png");
 
-const authImage = require("./auth/auth-side-img-1.png");
-export { authImage, landingImages, logo };
+// const authImage = require("./auth/auth-side-img-1.png");
+// export { authImage, landingImage, logo };
 
 // export default function App() {
 //   useEffect(() => {
