@@ -8,28 +8,20 @@ import SendButton from '@components/inputBox/SendButton';
 import TextInputBox from '@components/inputBox/TextInputBox';
 import { ErrorMessage } from '@hookform/error-message';
 import usePreloadAssets from '@hooks/usePreloadAssets';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { BaggageClaim, Info } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 // import { Image } from 'react-native';
+import AuthLogo from '@components/AuthLogo';
 import { Image } from '@components/ui/image';
 import { toast } from 'sonner-native';
 import { LoginForm } from '../../../types/AuthType';
 
 
 const Login = () => {
-
-  const [sideImageLoaded, setSideImageLoaded] = useState(false)
   const [buttonLoading, setButtonLoading] = useState(false);
   const imgIsLoaded = usePreloadAssets([require("@/assets/images/auth//auth-side-img-1.png"), require('@assets/images/auth/logo.png')])
-
-  // useEffect(() => {
-  //     const img = new Image();
-  //     img.src = authSideImg
-  //     img.onload = () => setSideImageLoaded(true)
-
-  //     return () => { img.onload = null; }
-  // }, [])
+  const router = useRouter()
 
   const form = useForm<LoginForm>({
     defaultValues: {
@@ -44,6 +36,7 @@ const Login = () => {
       await new Promise((res) => setTimeout(res, 2000)); //data to backend
       console.log(data); // remove
       toast("Login Successful",)
+      router.replace("/(user)/main")
       form.reset();
     } catch (error) {
       console.log(error);
@@ -60,10 +53,7 @@ const Login = () => {
           <div className='w-full h-full flex flex-row-reverse items-center justify-center lg:shadow-sm  shadow-amber-50/15 rounded-2xl'>
             <div className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-r-2xl lg:rounded-l-none h-full sm:px-6 shadow-sm  shadow-neutral/5 '>
 
-              <div className='h-30 w-30'>
-                <Image source={require('@assets/images/auth/logo.png')} className='w-full h-full rouneded-l-2xl object-contain'
-                />
-              </div>
+              <AuthLogo />
 
               <div className='text-xl font-["Sora"] text-base-content'> Login</div>
               <form
@@ -93,7 +83,7 @@ const Login = () => {
 
 
                 <span className=" flex justify-end">
-                  <Link className="text-sm text-white/50 dark:text-white/50  underline" href="/(user)/auth/forgetPassword">
+                  <Link className="text-sm text-typography-500 underline" href="/(user)/auth/forgetPassword">
                     Forgot Password
                   </Link>
                 </span>
@@ -103,13 +93,13 @@ const Login = () => {
 
                 <span className="flex justify-center ">
                   <Link href="/(user)/auth/register">
-                    <span className='text-center text-sm text-white/50 hover:underline'>Don't have an account?  Register</span>
+                    <span className='text-center text-typography-500 text-sm hover:underline'>Don't have an account?  Register</span>
                   </Link>
                 </span>
 
                 <span className="flex justify-center ">
                   <Link href="/(user)/auth/register">
-                    <span className='text-center text-white/50  text-sm hover:underline'>Go Back</span>
+                    <span className='text-center text-typography-500  text-sm hover:underline'>Go Back</span>
                   </Link>
                 </span>
 

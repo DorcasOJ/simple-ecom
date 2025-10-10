@@ -19,7 +19,7 @@ import { View } from "react-native";
 
 // import { Stack } from "expo-router";
 
-export default function UserMainLayout() {
+export default function CustomerServiceMainLayout() {
     return (
         <View className="flex-1 flex-row">
             {/* Sidebar stays constant */}

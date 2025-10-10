@@ -1,5 +1,6 @@
 'use dom';
 import Container from "@components/Container";
+import { Image } from "@components/ui/image";
 import usePreloadAssets from "@hooks/usePreloadAssets";
 import "@styles/global.css";
 import { Link } from "expo-router";
@@ -9,7 +10,7 @@ export default function HeroSection() {
     const isLoaded = usePreloadAssets([require("@assets/images/landing-page/hero.png")]);
 
     return (
-        <div className="min-h-[850px] w-full relative pt-40 sm:pt-45 text-white overflow-hidden bg-secondary-0">
+        <div className="min-h-[850px] w-full relative pt-40 sm:pt-45 overflow-hidden bg-primary-0">
             {/* Animated gradient background */}
 
             <Container>
@@ -17,7 +18,7 @@ export default function HeroSection() {
                     {/* LEFT SIDE (Text + Buttons) */}
                     <div
 
-                        className="lg:w-[60%] text-gray-200 dark:text-primary-content space-y-5"
+                        className="lg:w-[60%] space-y-5"
                     >
                         <h1
 
@@ -42,7 +43,7 @@ export default function HeroSection() {
                             <Link href="/(user)/auth/login">
                                 <button
 
-                                    className="px-6 py-3 bg-secondary text-white rounded-full font-semibold shadow-lg"
+                                    className="px-6 py-3 bg-secondary-0 text-primary-0 rounded-full hover:text-secondary-0 hover:bg-primary-0 hover:scale-105 font-semibold shadow-lg"
                                 >
                                     Start Shopping
                                 </button>
@@ -51,7 +52,7 @@ export default function HeroSection() {
                             <Link href="/dispatch/auth/login">
                                 <button
 
-                                    className="px-6 py-3 border-2 border-secondary text-secondary rounded-full font-semibold bg-transparent"
+                                    className="px-6 py-3 border-2 border-secondary-0 text-secondary-0 hover:text-primary-500 hover:border-primary-500 rounded-full font-semibold bg-transparent"
                                 >
                                     Become a Dispatcher
                                 </button>
@@ -60,14 +61,15 @@ export default function HeroSection() {
                     </div>
 
                     {/* RIGHT SIDE (Hero Image Reveal) */}
-                    <div className="flex-1 hidden lg:flex justify-center">
+                    <div className="w-[40%] hidden lg:flex items-center justify-center h-[550px] 3xl:h-[600px]">
                         <div
-
-                            className="rounded-2xl overflow-hidden shadow-xl"
+                            className="rounded-full w-full hover:shadow-sm h-full"
                         >
                             {
                                 isLoaded &&
-                                <img src="require('../../assets/images/landing-page/hero.png')" alt="" />
+                                // <img src="require('../../assets/images/landing-page/hero.png')" alt="" />
+                                < Image source={require('../../assets/images/landing-page/hero.png')} className='w-full h-full object-contain'
+                                />
                             }
 
                             {/* <img src={heroImg} alt="Hero" className="w-[500px] object-cover" /> */}

@@ -16,7 +16,7 @@ const Landing = () => {
             <HeroSection />
 
             <div className=" w-full relative h-[500px]"></div>
-            <div className="min-h-[600px] w-full relative bg-secondary-0 py-25 flex items-center justify-center">
+            <div className="min-h-[600px] w-full relative bg-primary-0 py-25 flex items-center justify-center">
                 <Container>
                     {/* middle for dispatcher */}
                     <div className=" flex items-center justify-center">
@@ -39,7 +39,7 @@ const Landing = () => {
             </div>
 
             <div className=" w-full bg-transparent relative h-[500px]"></div>
-            <div className=" w-full relative text-baseContent pt-30 bg-secondary-0">
+            <div className=" w-full relative text-baseContent pt-30 bg-primary-0">
                 <Container>
                     <div className="space-y-5 text-baseContent py-20">
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-['Sora'] max-w-lg mx-auto text-center">We’ve Got You Covered</h1>

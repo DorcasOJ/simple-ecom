@@ -16,6 +16,7 @@ import { toast } from 'sonner-native';
 
 
 const CreatePassword = () => {
+
     const [loading, setLoading] = useState(false);
 
     const form = useForm<CreatePasswordProps>({
@@ -103,7 +104,7 @@ const CreatePassword = () => {
                                 <SendButton actionWord='Get Reset Password Link' isLoading={loading} />
 
                                 <span className="flex justify-center ">
-                                    <Link href={"/dispatch/auth/login"}>
+                                    <Link href={"/customerService/auth/login"}>
                                         <span className='text-center text-sm text-base-content/50 hover:underline'>Go To Login</span>
                                     </Link>
                                 </span>

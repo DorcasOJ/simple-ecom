@@ -24,13 +24,6 @@ const Login = () => {
   const [buttonLoading, setButtonLoading] = useState(false);
   const imgIsLoaded = usePreloadAssets([require("@/assets/images/auth//auth-side-img-1.png"), require('@assets/images/auth/logo.png')])
   const router = useRouter()
-  // useEffect(() => {
-  //     const img = new Image();
-  //     img.src = authSideImg
-  //     img.onload = () => setSideImageLoaded(true)
-
-  //     return () => { img.onload = null; }
-  // }, [])
 
   const form = useForm<LoginForm>({
     defaultValues: {
@@ -62,9 +55,10 @@ const Login = () => {
 
           <div className='w-full h-full flex flex-row-reverse items-center justify-center lg:shadow-sm  shadow-amber-50/15 rounded-2xl'>
             <div className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-r-2xl lg:rounded-l-none h-full sm:px-6 shadow-sm  shadow-neutral/5 '>
+
               <AuthLogo />
 
-              <div className='text-xl font-["Sora"] text-base-content'>Dispatch Login</div>
+              <div className='text-xl font-["Sora"] text-base-content'>Admin Login</div>
               <form
                 onSubmit={form.handleSubmit(handleLogin)}
                 className="w-[100%] max-w-lg space-y-4 "
@@ -92,7 +86,7 @@ const Login = () => {
 
 
                 <span className=" flex justify-end">
-                  <Link className="text-sm text-typography-500 underline" href="/dispatch/auth/forgetPassword">
+                  <Link className="text-sm text-typography-500 underline" href="/admin/auth/forgetPassword">
                     Forgot Password
                   </Link>
                 </span>
@@ -101,13 +95,13 @@ const Login = () => {
                 <SendButton isLoading={buttonLoading} actionWord="Login" handleSubmit={handleLogin} />
 
                 <span className="flex justify-center ">
-                  <Link href="/dispatch/auth/register">
+                  <Link href="/admin/auth/register">
                     <span className='text-center text-sm text-typography-500 hover:underline'>Don't have an account?  Register</span>
                   </Link>
                 </span>
 
                 <span className="flex justify-center ">
-                  <Link href="/dispatch/auth/register">
+                  <Link href="/admin/auth/register">
                     <span className='text-center text-typography-500  text-sm hover:underline'>Go Back</span>
                   </Link>
                 </span>

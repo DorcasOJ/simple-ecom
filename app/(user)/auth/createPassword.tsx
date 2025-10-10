@@ -1,11 +1,11 @@
 'use dom'
 
 import { CreatePasswordProps } from '@/types/AuthType';
+import AuthLogo from '@components/AuthLogo';
 import Container from '@components/Container';
 import ConfirmPasswordInputBox from '@components/inputBox/ConfirmPasswordInput';
 import PasswordInputBox from '@components/inputBox/PasswordInputBox';
 import SendButton from '@components/inputBox/SendButton';
-import { Image } from '@components/ui/image';
 import { ErrorMessage } from '@hookform/error-message';
 import { Link } from 'expo-router';
 import { Info } from 'lucide-react-native';
@@ -16,6 +16,7 @@ import { toast } from 'sonner-native';
 
 
 const CreatePassword = () => {
+
     const [loading, setLoading] = useState(false);
 
     const form = useForm<CreatePasswordProps>({
@@ -50,11 +51,7 @@ const CreatePassword = () => {
                     <div className='w-full h-full flex flex-row-reverse items-center justify-center  rounded-2xl '>
                         <div className='lg:flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-2xl h-full sm:px-6 max-w-xl lg:shadow-sm shadow-amber-50/50'>
 
-                            <div className='h-30 w-30'>
-                                <Image source={require('@assets/images/auth/logo.png')} className='w-full h-full rouneded-l-2xl object-contain'
-                                />
-                            </div>
-
+                            <AuthLogo />
                             <div className='text-xl font-["Sora"] text-base-content'> Create Password</div>
                             <p className='text-sm text-base-content/50 text-center'>
                                 Create a new password for your account. Ensure it's strong and secure.

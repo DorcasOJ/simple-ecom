@@ -30,12 +30,12 @@ const Footer = () => {
                 <h6 className="footer-title">Newsletter</h6>
                 <fieldset className="w-80">
                     <label>Enter your email address</label>
-                    <div className="join mt-3 h-7 max-h-7">
+                    <div className="flex flex-wrap mt-3 h-7 max-h-7">
                         <input
                             type="text"
                             placeholder="username@site.com"
                             className="max-w-[130px] placeholder:text-xs rounded-l-md p-1 h-full" />
-                        <button className="text-sm bg-primary rounded-r-md py-1 px-2 h-full">Subscribe</button>
+                        <button className="text-sm bg-secondary-0 text-white rounded-r-md py-1 px-2 h-full">Subscribe</button>
                     </div>
                 </fieldset>
             </form>

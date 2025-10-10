@@ -44,7 +44,8 @@ const ForgotPassword = () => {
                 <div className="sm:min-h-[800px] h-screen mx-auto sm:px-6 7xl:px-0 py-20 sm:py-14 z-10 relative flex flex-row items-center justify-center">
 
                     <div className='w-full h-full flex flex-row-reverse items-center justify-center  rounded-2xl '>
-                        <div className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-2xl h-full sm:px-6 max-w-xl lg:shadow-sm shadow-amber-50/50'>
+                        <div className='lg:flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-2xl h-full sm:px-6 max-w-xl lg:shadow-sm shadow-amber-50/50'>
+
 
                             <AuthLogo />
 
@@ -65,7 +66,7 @@ const ForgotPassword = () => {
                                 <SendButton actionWord='Get Reset Password Link' isLoading={loading} />
 
                                 <span className="flex justify-center ">
-                                    <Link href="/(user)/auth/login">
+                                    <Link href="/admin/auth/login">
                                         <span className='text-center text-sm text-base-content/50 hover:underline'>Go To Login</span>
                                     </Link>
                                 </span>

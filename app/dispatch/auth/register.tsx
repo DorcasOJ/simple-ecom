@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner-native';
 
 import { SignupForm } from '@/types/AuthType';
+import AuthLogo from '@components/AuthLogo';
 import ConfirmPasswordInputBox from '@components/inputBox/ConfirmPasswordInput';
 import PasswordInputBox from '@components/inputBox/PasswordInputBox';
 import SendButton from '@components/inputBox/SendButton';
@@ -16,12 +17,12 @@ import TextInputBox from '@components/inputBox/TextInputBox';
 import { Image } from '@components/ui/image';
 import { ErrorMessage } from '@hookform/error-message';
 import usePreloadAssets from '@hooks/usePreloadAssets';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 
 
 const Signup = () => {
     const imgIsLoaded = usePreloadAssets([require("@/assets/images/auth//auth-side-img-1.png"), require('@assets/images/auth/logo.png')])
-
+    const router = useRouter()
     const [buttonLoading, setButtonLoading] = useState(false);
 
     const form = useForm<SignupForm>({
@@ -42,6 +43,8 @@ const Signup = () => {
             await new Promise((res) => setTimeout(res, 2000)); //data to backend
             console.log(data); // remove
             toast("Signup Successful",)
+            router.replace("/(user)/main")
+
             form.reset();
         } catch (error) {
             console.log(error);
@@ -59,12 +62,8 @@ const Signup = () => {
                     <div className='w-full h-full flex flex-row items-center justify-center lg:shadow-sm  shadow-amber-50/15 rounded-2xl'>
                         <div className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-l-2xl lg:rounded-r-none h-full sm:px-6 shadow-sm  shadow-neutral/5 '>
 
-                            <div className='h-30 w-30'>
-                                <Image source={require('@assets/images/auth/logo.png')} className='w-full h-full rouneded-l-2xl object-contain'
-                                />
-                            </div>
-
-                            <div className='text-xl font-["Sora"] text-base-content'> Signup</div>
+                            <AuthLogo />
+                            <div className='text-xl font-["Sora"] text-base-content'>Disatch Signup</div>
                             <form
                                 onSubmit={form.handleSubmit(handleSignup)}
                                 className="w-[100%] max-w-lg space-y-4 "
@@ -188,7 +187,7 @@ const Signup = () => {
 
             </Container >
 
-        </div >
+        </ div>
     );
 };
 

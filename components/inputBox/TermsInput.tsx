@@ -28,13 +28,13 @@ const TermsInput = ({ form, name }: TermInputProps) => {
                             By signing up, you agree to the{" "}
                             <Link
                                 href={"/"}
-                                className="hover:text-tertiary-500 text-tertiary-50 "
+                                className="hover:text-tertiary-650/50 text-primary-500 "
                             >
                                 {" "}
                                 Terms of Service{" "}
                             </Link>
                             and{" "}
-                            <Link href={"/"} className="hover:text-tertiary-500 text-tertiary-50 ">
+                            <Link href={"/"} className="hover:text-tertiary-650/50 text-primary-500 ">
                                 Condition Agreement
                             </Link>
                         </label>

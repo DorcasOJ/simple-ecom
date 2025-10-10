@@ -6,7 +6,9 @@ import { useState } from "react";
 
 const ConfirmPasswordInputBox = ({ form, password }: ConfirmPasswordInputProp) => {
     const [showPassword, setShowPassword] = useState(false);
-
+    // useEffect(() => {
+    //     form.trigger("confirmPassword");
+    // }, [password]);
     return (
         <div>
             <div className="w-full relative flex items-center">
@@ -17,12 +19,12 @@ const ConfirmPasswordInputBox = ({ form, password }: ConfirmPasswordInputProp) =
                 <input
                     id="confirmPassword"
                     {...form.register("confirmPassword", {
-                        required: "Please confirm your password",
+                        required: "Password does not match",
                         validate: (value: string) =>
                             value === password || "Password does not match!",
                     })}
                     placeholder="Confirm your password"
-                    className={`w-full h-12 rounded-full border  ${form.formState.errors.password
+                    className={`w-full h-12 rounded-full border  ${form.formState.errors.confirmPassword
                         ? "border-error-0"
                         : "border-primary-0"
                         }  focus:border focus:border-primary-500 focus:outline-none focus-visible:ring-0 rounded-full py-2 ps-14 pe-5`}

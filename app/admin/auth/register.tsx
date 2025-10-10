@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
 
-import Container from '@components/Container';
 
 import { BaggageClaim, Info } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
@@ -9,6 +8,7 @@ import { toast } from 'sonner-native';
 
 import { SignupForm } from '@/types/AuthType';
 import AuthLogo from '@components/AuthLogo';
+import Container from '@components/Container';
 import ConfirmPasswordInputBox from '@components/inputBox/ConfirmPasswordInput';
 import PasswordInputBox from '@components/inputBox/PasswordInputBox';
 import SendButton from '@components/inputBox/SendButton';
@@ -21,11 +21,10 @@ import { Link, useRouter } from 'expo-router';
 
 
 const Signup = () => {
-
     const imgIsLoaded = usePreloadAssets([require("@/assets/images/auth//auth-side-img-1.png"), require('@assets/images/auth/logo.png')])
-    const [buttonLoading, setButtonLoading] = useState(false);
-    const router = useRouter();
 
+    const [buttonLoading, setButtonLoading] = useState(false);
+    const router = useRouter()
     const form = useForm<SignupForm>({
         defaultValues: {
             email: "",
@@ -55,18 +54,16 @@ const Signup = () => {
     }
 
     return (
-        <div className='w-full bg-white dark:bg-black h-screen min-h-[1000px] overflow-auto'>
+        <div className='w-full bg-white dark:bg-black '>
             {/* <Navbar page='auth' /> */}
-            <Container>
-                <div className="min-h-[900px] overflow-auto h-screen mx-auto sm:px-6 7xl:px-0 py-20 sm:py-14 z-10 relative flex flex-row items-center justify-center">
+            <Container >
+                <div className="min-h-[900px] h-screen mx-auto sm:px-6 7xl:px-0 py-20 sm:py-14 z-10 relative flex flex-row items-center justify-center">
 
                     <div className='w-full h-full flex flex-row items-center justify-center lg:shadow-sm  shadow-amber-50/15 rounded-2xl'>
                         <div className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-l-2xl lg:rounded-r-none h-full sm:px-6 shadow-sm  shadow-neutral/5 '>
-
-
                             <AuthLogo />
 
-                            <div className='text-xl font-["Sora"] text-base-content'> Signup</div>
+                            <div className='text-xl font-["Sora"] text-base-content'>Adim Signup</div>
                             <form
                                 onSubmit={form.handleSubmit(handleSignup)}
                                 className="w-[100%] max-w-lg space-y-4 "
@@ -149,7 +146,7 @@ const Signup = () => {
 
 
                                 <span className="flex justify-center  ">
-                                    <Link href={"/(user)/auth/login"}>
+                                    <Link href={"/admin/auth/login"}>
                                         <span className='text-center text-sm text-base-content/50 hover:underline'>Have an account?  Login</span>
                                     </Link>
                                 </span>
@@ -188,7 +185,7 @@ const Signup = () => {
 
                 </div >
 
-            </Container >
+            </Container>
 
         </div >
     );

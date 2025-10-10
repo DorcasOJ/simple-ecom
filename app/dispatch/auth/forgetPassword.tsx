@@ -1,10 +1,10 @@
 'use dom';
 
 import { ForgotPasswordProps } from '@/types/AuthType';
+import AuthLogo from '@components/AuthLogo';
 import Container from '@components/Container';
 import SendButton from '@components/inputBox/SendButton';
 import TextInputBox from '@components/inputBox/TextInputBox';
-import { Image } from '@components/ui/image';
 import { Link } from 'expo-router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -47,10 +47,7 @@ const ForgotPassword = () => {
                     <div className='w-full h-full flex flex-row-reverse items-center justify-center  rounded-2xl '>
                         <div className='lg:flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-2xl h-full sm:px-6 max-w-xl lg:shadow-sm shadow-amber-50/50'>
 
-                            <div className='h-30 w-30'>
-                                <Image source={require('@assets/images/auth/logo.png')} className='w-full h-full rouneded-l-2xl object-contain'
-                                />
-                            </div>
+                            <AuthLogo />
 
                             <div className='text-xl font-["Sora"] text-base-content'> Forget Password</div>
                             <p className='text-sm text-base-content/50 text-center max-w-sm'>
