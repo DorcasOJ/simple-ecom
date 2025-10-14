@@ -7,6 +7,8 @@ import { ThemeProvider, useThemeContext } from "@hooks/ThemeContext";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Toaster } from 'sonner-native';
+// Import the global.css file in the index.js file:
+
 
 export default function RootLayout() {
   return (
@@ -23,6 +25,7 @@ function AppContent() {
     <GluestackUIProvider mode={colorMode}>
 
       <SafeAreaProvider>
+
         <GestureHandlerRootView style={{ flex: 1 }}> {/* Important for gesture handler */}
 
           <Stack screenOptions={{ headerShown: false }}>
@@ -31,9 +34,11 @@ function AppContent() {
 
             {/* Separate role stacks */}
             <Stack.Screen name="(user)" />
+            <Stack.Screen name="auth" />
             <Stack.Screen name="dispatch" />
             <Stack.Screen name="admin" />
             <Stack.Screen name="customerService" />
+            <Stack.Screen name="compliance" />
           </Stack>
           <Toaster position="top-center" closeButton />
 

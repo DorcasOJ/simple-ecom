@@ -1,86 +1,93 @@
-'use dom';
-
-
-import { Popover, PopoverContent } from "@/components/ui/popover";
-import { Button } from "@components/ui/button";
-import { ErrorMessage } from "@hookform/error-message";
-import { CircleQuestionMark, Info } from "lucide-react-native";
-import React from "react";
+import React, { useRef } from "react";
 import { Controller } from "react-hook-form";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
-import { PhoneInputBoxType } from "../../types/inputBoxType";
-import "./PhoneInput.css";
+import { Platform, Text, TextInput, View } from "react-native";
 
-const PhoneInputBox = ({ form }: PhoneInputBoxType) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const handleOpen = () => {
-        setIsOpen(true);
-    };
-    const handleClose = () => {
-        setIsOpen(false);
-    };
+type Props = {
+    control: any;
+    name: string;
+    defaultCode?: string;
+    rules?: any;
+};
+
+const PhoneInputField = ({ control, name, defaultCode = "US", rules }: Props) => {
+    const phoneInputRef = useRef<any>(null);
+
+    // Dynamically import native phone input only on mobile
+    const PhoneInput =
+        Platform.OS !== "web"
+            ? require("react-native-phone-number-input").default
+            : null;
+
+    // Dynamically import web-friendly version
+    const WebPhoneInput =
+        Platform.OS === "web"
+            ? require("react-phone-number-input").default
+            : null;
+
+    if (Platform.OS === "web") {
+        require("react-phone-number-input/style.css");
+    }
+
     return (
-        <div>
-            <div className="w-full relative flex items-center">
-                <Controller
-                    name="phone"
-                    control={form.control}
-                    rules={{ required: "Phone is required" }}
-                    render={({ field }) => (
-                        <div
-                            className={`relative w-full h-12 rounded-full border  ${form.formState.errors?.phone
-                                ? "border-destructive"
-                                : "dark:border-neutral-800"
-                                }  focus:border focus:border-neutral-100  focus:outline-none focus-visible:ring-0 rounded-full flex items-center py-2 px-5
-            `}
-                        >
-                            <PhoneInput
-                                placeholder="Enter phone number"
-                                value={field.value}
-                                onChange={field.onChange}
-                                defaultCountry="US"
-                                className="flex-1 [&>.PhoneInputInput]:outline-none [&>.PhoneInputInput]:border-0"
-                            />
-
-                            <div className="pe-6 text-sm absolute right-0 flex items-center justify-center">
-                                <Popover
-                                    isOpen={isOpen}
-                                    onClose={handleClose}
-                                    onOpen={handleOpen}
-                                    trigger={(triggerProps) => (
-                                        <Button>
-                                            <Button {...triggerProps}>
-                                                <CircleQuestionMark size={"20px"} />
-                                            </Button>
-                                        </Button>
-                                    )}
-                                >
-                                    <PopoverContent className="text-xs">
-                                        Select your country name and input your phone number. Ensure
-                                        it is the right flag!
-                                    </PopoverContent>
-                                </Popover>
-                            </div>
-                        </div>
+        <Controller
+            control={control}
+            name={name}
+            rules={rules}
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <View style={{ marginVertical: 10 }}>
+                    {Platform.OS === "web" && WebPhoneInput ? (
+                        <WebPhoneInput
+                            placeholder="Enter phone number"
+                            defaultCountry={defaultCode}
+                            value={value}
+                            onChange={onChange}
+                            style={{
+                                width: "100%",
+                                border: error ? "1px solid red" : "1px solid #ccc",
+                                borderRadius: 8,
+                                padding: 10,
+                            }}
+                        />
+                    ) : PhoneInput ? (
+                        <PhoneInput
+                            ref={phoneInputRef}
+                            defaultCode={defaultCode}
+                            layout="first"
+                            value={value}
+                            onChangeFormattedText={onChange}
+                            containerStyle={{
+                                borderWidth: 1,
+                                borderColor: error ? "red" : "#ccc",
+                                borderRadius: 8,
+                            }}
+                            textContainerStyle={{
+                                borderTopRightRadius: 8,
+                                borderBottomRightRadius: 8,
+                            }}
+                        />
+                    ) : (
+                        <TextInput
+                            value={value}
+                            onChangeText={onChange}
+                            placeholder="Enter phone number"
+                            style={{
+                                borderWidth: 1,
+                                borderColor: error ? "red" : "#ccc",
+                                borderRadius: 8,
+                                padding: 10,
+                            }}
+                        />
                     )}
-                />
-            </div>
 
-            <ErrorMessage
-                errors={form.formState.errors}
-                name="phone"
-                render={({ message }) => (
-                    <p className="text-sm text-center justify-center text-destructive mt-2 flex ">
-                        <span className=" text-destructive ">
-                            <Info size={"18px"} />
-                        </span>
-                        {message}
-                    </p>
-                )}
-            />
-        </div>
+                    {error && (
+                        <Text style={{ color: "red", marginTop: 5 }}>
+                            {error.message || "Invalid phone number"}
+                        </Text>
+                    )}
+                </View>
+            )}
+        />
     );
 };
 
-export default PhoneInputBox;
+export default PhoneInputField;

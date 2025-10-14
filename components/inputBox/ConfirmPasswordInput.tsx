@@ -24,7 +24,7 @@ const ConfirmPasswordInputBox = ({ form, password }: ConfirmPasswordInputProp) =
                             value === password || "Password does not match!",
                     })}
                     placeholder="Confirm your password"
-                    className={`w-full h-12 rounded-full border  ${form.formState.errors.confirmPassword
+                    className={`w-full h-12 rounded-full bg-transparent border  ${form.formState.errors.confirmPassword
                         ? "border-error-0"
                         : "border-primary-0"
                         }  focus:border focus:border-primary-500 focus:outline-none focus-visible:ring-0 rounded-full py-2 ps-14 pe-5`}

@@ -17,7 +17,7 @@ export type TextInputBoxType = {
   placeholder: string;
   fieldName: string;
   type: string;
-  icon?: "mail" | "address" | "user" | null;
+  icon?: "mail" | "address" | "user" | "phone" | null;
   required?: boolean;
   minLength?: boolean;
   minChar?: number;
@@ -28,4 +28,5 @@ export type TextInputBoxType = {
 
 export type PhoneInputBoxType = {
   form: any;
+  // defaultCode?: string;
 };

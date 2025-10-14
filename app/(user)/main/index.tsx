@@ -1,7 +1,7 @@
 'use dom';
+import Navbar from "@components/layout/Navbar";
 import { useThemeContext } from "@hooks/ThemeContext";
-import { Search, ShoppingCart } from "lucide-react-native";
-import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 const categories = [
     { id: "1", name: "Men", image: "https://via.placeholder.com/80x80?text=Men" },
@@ -17,33 +17,34 @@ const products = [
     { id: "4", name: "Leather Bag", price: 100, image: "https://via.placeholder.com/200x200?text=Bag" },
 ];
 
-export default function indec() {
+export default function index() {
 
-    const { colorMode, toggleColorMode } = useThemeContext();
+    const { colorMode } = useThemeContext();
     const isDark = colorMode === "dark";
 
     return (
-        <View className={`flex-1 ${isDark ? "bg-[#0f1512]" : "bg-[#f6f8f7]"}`}>
+        <View className={`flex-1 ${isDark ? "bg-black" : "bg-[#f6f8f7]"}`}>
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 100 }}
             >
                 {/* Header */}
                 <View className="flex-row items-center justify-between px-5 pt-10 pb-4">
-                    <View>
+                    {/* <View>
                         <Text className={`text-lg ${isDark ? "text-gray-200" : "text-gray-700"}`}>Welcome back 👋</Text>
                         <Text className={`text-2xl font-bold ${isDark ? "text-white" : "text-black"}`}>
                             Shop Your Style
                         </Text>
-                    </View>
+                    </View> */}
+                    <Navbar page="auth" />
 
-                    <TouchableOpacity className="p-2 rounded-full bg-primary-0/40">
+                    {/* <TouchableOpacity className="p-2 rounded-full bg-primary-0/40">
                         <ShoppingCart size={22} color={isDark ? "white" : "black"} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
 
                 {/* Search Bar */}
-                <View className="px-5">
+                {/* <View className="px-5">
                     <View
                         className={`flex-row items-center rounded-full px-4 py-2 ${isDark ? "bg-gray-800" : "bg-gray-100"
                             }`}
@@ -55,7 +56,7 @@ export default function indec() {
                             className={`flex-1 ml-2 ${isDark ? "text-white" : "text-black"}`}
                         />
                     </View>
-                </View>
+                </View> */}
 
                 {/* Categories */}
                 <View className="mt-6">

@@ -25,6 +25,7 @@
       "@/*": [
         "./*"
       ],
+      "@env": ["./.env"],
       "tailwind.config": [
         "./tailwind.config.js"
       ]

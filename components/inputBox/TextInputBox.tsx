@@ -1,5 +1,5 @@
 import { ErrorMessage } from "@hookform/error-message";
-import { Info, MailIcon, MapPin, User2Icon } from "lucide-react-native";
+import { Info, MailIcon, MapPin, PhoneIcon, User2Icon } from "lucide-react-native";
 import { TextInputBoxType } from "../../types/inputBoxType";
 
 const TextInputBox = ({
@@ -22,6 +22,8 @@ const TextInputBox = ({
                     {icon === "mail" && <MailIcon size={"23px"} />}
                     {icon === "address" && <MapPin size={"20px"} />}
                     {icon === "user" && <User2Icon size={"22px"} />}
+
+                    {icon === "phone" && <PhoneIcon size={"22px"} />}
                 </label>
 
                 <input
@@ -50,7 +52,7 @@ const TextInputBox = ({
                             },
                         }),
                     })}
-                    className={`w-full h-12 rounded-full border  ${form.formState.errors?.[fieldName]
+                    className={`w-full h-12 rounded-full bg-transparent border  ${form.formState.errors?.[fieldName]
                         ? "border-error-0"
                         : "border-primary-0"
                         }  focus:border focus:border-primary-500 focus:outline-none focus-visible:ring-0 rounded-full py-2 ${icon ? "ps-14" : "ps-6"

@@ -1,29 +1,31 @@
 
-import { useState } from 'react';
-
-import Container from '@components/Container';
-
-import { BaggageClaim, Info } from 'lucide-react-native';
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner-native';
-
 import { SignupForm } from '@/types/AuthType';
 import AuthLogo from '@components/AuthLogo';
+import Container from '@components/Container';
 import ConfirmPasswordInputBox from '@components/inputBox/ConfirmPasswordInput';
 import PasswordInputBox from '@components/inputBox/PasswordInputBox';
 import SendButton from '@components/inputBox/SendButton';
 import TermsInput from '@components/inputBox/TermsInput';
 import TextInputBox from '@components/inputBox/TextInputBox';
+import { Box } from '@components/ui/box';
 import { Image } from '@components/ui/image';
+import { Text } from '@components/ui/text';
 import { ErrorMessage } from '@hookform/error-message';
+import useAuth from '@hooks/useAuth';
 import usePreloadAssets from '@hooks/usePreloadAssets';
 import { Link, useRouter } from 'expo-router';
+import { BaggageClaim, Info } from 'lucide-react-native';
+import { useForm } from 'react-hook-form';
+import { Pressable } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Signup = () => {
+    const { register, buttonLoading, error, } = useAuth("user");
+
 
     const imgIsLoaded = usePreloadAssets([require("@/assets/images/auth//auth-side-img-1.png"), require('@assets/images/auth/logo.png')])
-    const [buttonLoading, setButtonLoading] = useState(false);
+
     const router = useRouter();
 
     const form = useForm<SignupForm>({
@@ -37,61 +39,72 @@ const Signup = () => {
             confirmPassword: ""
         },
     });
-
     const handleSignup = async (data: SignupForm) => {
-        setButtonLoading(true);
         try {
-            await new Promise((res) => setTimeout(res, 2000)); //data to backend
-            console.log(data); // remove
-            toast("Signup Successful",)
-            router.replace("/(user)/main")
-
-            form.reset();
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setButtonLoading(false);
+            await register(data, form);
+        } catch (err) {
+            console.error("Register Error:", err);
         }
-    }
+    };
+
+
 
     return (
-        <div className='w-full bg-white dark:bg-black h-screen min-h-[1000px] overflow-auto'>
+        <ScrollView style={{ $$css: true, _: 'w-full bg-gray-100 dark:bg-neutral-800 h-[1100px] overflow-auto' }}>
             {/* <Navbar page='auth' /> */}
-            <Container>
-                <div className="min-h-[900px] overflow-auto h-screen mx-auto sm:px-6 7xl:px-0 py-20 sm:py-14 z-10 relative flex flex-row items-center justify-center">
+            <Container variant='landing'>
+                <Box className="h-full overflow-auto sm:px-6 7xl:px-0 py-20 sm:py-14 z-10 relative flex flex-row items-center justify-center">
 
-                    <div className='w-full h-full flex flex-row items-center justify-center lg:shadow-sm  shadow-amber-50/15 rounded-2xl'>
-                        <div className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-l-2xl lg:rounded-r-none h-full sm:px-6 shadow-sm  shadow-neutral/5 '>
+                    <Box className='w-full h-full flex flex-row items-center justify-center sm:shadow-md  shadow-secondary-300 dark:shadow-secondary-200/20  rounded-2xl'>
+                        <Box className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-l-2xl lg:rounded-r-none h-full sm:px-6 py-8'>
 
 
                             <AuthLogo />
 
-                            <div className='text-xl font-["Sora"] text-base-content'> Signup</div>
+                            <Box className='text-xl font-["Sora"] text-base-content'>Dispatch Signup</Box>
+
+                            {error && <Text size={"sm"} className='text-error-0 text-center max-w-sm'>{error}</Text>}
                             <form
                                 onSubmit={form.handleSubmit(handleSignup)}
                                 className="w-[100%] max-w-lg space-y-4 "
                             >
-                                <div className='flex flex-col sm:flex-row items-center justify-center gap-x-4 gap-y-4'>
-                                    <div className='w-full'>
+                                <Box className='flex flex-col sm:flex-row items-center justify-center gap-x-4 gap-y-4'>
+                                    <Box className='w-full'>
                                         <TextInputBox form={form} icon='user' fieldName='firstName' type='text' placeholder='First Name' key={"firstName"} />
-                                    </div>
+                                    </Box>
 
-                                    <div className='w-full'>
+                                    <Box className='w-full'>
                                         <TextInputBox form={form} icon='user' fieldName='lastName' type='text' placeholder='Last name' key={"lastName"} />
 
 
-                                    </div>
+                                    </Box>
 
-                                </div>
+                                </Box>
 
 
-                                <div className='w-full'>
+                                <Box className='w-full'>
                                     <TextInputBox form={form} icon='mail' fieldName='email' type='email' placeholder='Email' key={"email"} />
 
 
-                                </div>
+                                </Box>
 
-                                <div>
+                                <Box>
+                                    <TextInputBox form={form} icon='phone' fieldName='phone' type='Phone' placeholder='Phone Number' key={"Pnone"} />
+                                    <ErrorMessage
+                                        errors={form.formState.errors}
+                                        name="phone"
+                                        render={({ message }) => (
+                                            <p className="text-sm text-center justify-center text-destructive mt-2 flex ">
+                                                <span className=" text-destructive ">
+                                                    <Info size={"18px"} />
+                                                </span>
+                                                {message}
+                                            </p>
+                                        )}
+                                    />
+                                </Box>
+
+                                <Box>
                                     <PasswordInputBox form={form}
 
                                     />
@@ -107,10 +120,10 @@ const Signup = () => {
                                             </p>
                                         )}
                                     />
-                                </div>
+                                </Box>
 
 
-                                <div className='relative '>
+                                <Box className='relative '>
 
                                     <ConfirmPasswordInputBox form={form}
                                         password={`${form.watch('password')}`}
@@ -127,7 +140,7 @@ const Signup = () => {
                                             </p>
                                         )}
                                     />
-                                </div>
+                                </Box>
 
                                 <TermsInput form={form} name='terms' />
                                 <ErrorMessage
@@ -143,54 +156,54 @@ const Signup = () => {
                                     )}
                                 />
 
-                                <div className='my-8'>
+                                <Box className='my-8'>
                                     <SendButton actionWord='Signup' isLoading={buttonLoading} />
-                                </div>
-
-
-                                <span className="flex justify-center  ">
-                                    <Link href={"/(user)/auth/login"}>
-                                        <span className='text-center text-sm text-base-content/50 hover:underline'>Have an account?  Login</span>
-                                    </Link>
-                                </span>
-
-                                <span className="flex justify-center pb-5 sm:pb-0 ">
-                                    <Link href={"/"}>
-                                        <span className='text-center text-sm text-base-content/50 hover:underline'>Back to Home</span>
-                                    </Link>
-                                </span>
+                                </Box>
 
                             </form>
 
-                            <div className="text-black dark:text-white flex justify-center ">
-                                <Link href="/">
-                                    <span className='text-center text-white/50  text-sm hover:underline'>
-                                        Go Back</span>
-                                </Link>
-                            </div>
-                        </div>
+                            <Box className=' flex flex-col items-center justify-center gap-3 text-xs text-black dark:text-white hov' >
 
-                        <div className=' flex-1 hidden lg:flex w-full h-full'>
+                                <Link href={"/auth/dispatch/login"}>
+                                    <Text className='text-center  hover:underline text-black dark:text-white' size={'sm'}>Have an account?  login</Text>
+                                </Link>
+
+                                <Link href={"/"}>
+                                    <Text className='text-center text-black dark:text-white hover:underline' size={'sm'}>Back to Home</Text>
+                                </Link>
+
+                                <Pressable onPress={() => router.back()}>
+                                    <Text className='text-center text-black dark:text-white  text-sm hover:underline'>
+                                        Go Back</Text>
+                                </Pressable>
+
+                            </Box>
+
+                        </Box>
+
+                        <Box className=' w-[50%] hidden lg:flex h-full items-center justify-center rouneded-2xl   '>
+
                             {
                                 imgIsLoaded ?
-                                    <div className='flex-col hidden items-center justify-center lg:flex h-full overflow-hidden max-h-screen rounded-r-2xl w-full'>
-                                        < Image source={require('../../../assets/images/auth/auth-side-img-1.png')} className='w-full h-full rouneded-r-2xl object-contain'
+                                    <Box className='flex items-center justify-center lg:flex h-full rounded-r-2xl w-full rouneded-2xl overflow-hidden'>
+                                        < Image source={require('../../../assets/images/auth/auth-side-img-1.png')} className='w-full h-full rouneded-r-2xl object-cover' alt=""
                                         />
-                                    </div>
+                                    </Box>
                                     :
 
-                                    <BaggageClaim strokeWidth={'1px'} size={'500px'} className='text-base-content text-5xl mt-30' />}
+                                    <BaggageClaim strokeWidth={'1px'} size={'500px'} className='text-base-content text-5xl mt-30' />
 
-                        </div>
+                            }
+                        </Box>
 
 
-                    </div>
+                    </Box>
 
-                </div >
+                </Box >
 
             </Container >
 
-        </div >
+        </ScrollView >
     );
 };
 

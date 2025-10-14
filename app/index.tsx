@@ -1,7 +1,7 @@
 'use dom';
 
 import "@styles/global.css";
-import { Platform, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import Landing from "./Landing";
 
 export default function index() {
@@ -9,12 +9,8 @@ export default function index() {
     <ScrollView style={{
       $$css: true, _: ' relative bg-secondary'
     }}>
-      {Platform.OS === "web" ? (
-        < img src="https://images.unsplash.com/photo-1756244866467-f4682840070c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D" alt="" className="w-full h-full object-cover absolute inset-0 -z-10"
-        />
-      ) : (
-        <Image source={'https://images.unsplash.com/photo-1756244866467-f4682840070c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D'} style={{ $$css: true, _: "w-full h-full object-cover absolute inset-0 -z-10" }} />
-      )}
+
+      {/* <Image source={'https://images.unsplash.com/photo-1756244866467-f4682840070c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D'} style={{ $$css: true, _: "w-full h-full object-cover absolute inset-0 -z-10" }} /> */}
 
       < Landing />
       {/* <View style={{ $$css: true, _:items-center mt-12">
@@ -43,19 +39,3 @@ export default function index() {
     </ScrollView >
   );
 }
-
-// import { Text, View } from "react-native";
-
-// export default function Index() {
-//   return (
-//     <View
-//       style={
-//         flex: 1,
-//         justifyContent: "center",
-//         alignItems: "center",
-//       }}
-//     >
-//       <Text>Edit app/index.tsx to edit this screen.</Text>
-//     </View>
-//   );
-// }

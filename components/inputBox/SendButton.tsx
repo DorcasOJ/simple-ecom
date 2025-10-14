@@ -5,7 +5,7 @@ import { ButtonProps } from "@/types/AuthType";
 
 const SendButton = ({ isLoading, actionWord, handleSubmit }: ButtonProps) => {
     return (
-        <button type="submit" className="hover:bg-primary-500 rounded-full bg-primary-0 w-full py-3 text-center flex items-center justify-center">
+        <button type="submit" className="hover:bg-primary-500 rounded-full bg-primary-0 w-full py-3 text-center flex items-center justify-center" disabled={isLoading}>
             {
                 isLoading ?
                     <svg

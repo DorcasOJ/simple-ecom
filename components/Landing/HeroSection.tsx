@@ -13,7 +13,7 @@ export default function HeroSection() {
         <div className="min-h-[850px] w-full relative pt-40 sm:pt-45 overflow-hidden bg-primary-0">
             {/* Animated gradient background */}
 
-            <Container>
+            <Container variant="landing">
                 <div className="flex flex-col md:flex-row items-center lg:items-start justify-center lg:justify-between gap-5">
                     {/* LEFT SIDE (Text + Buttons) */}
                     <div
@@ -40,7 +40,7 @@ export default function HeroSection() {
 
                             className="flex flex-col lg:flex-row gap-5 pt-4 font-['Sora'] justify-center lg:justify-start items-center"
                         >
-                            <Link href="/(user)/auth/login">
+                            <Link href="/auth/user/register">
                                 <button
 
                                     className="px-6 py-3 bg-secondary-0 text-primary-0 rounded-full hover:text-secondary-0 hover:bg-primary-0 hover:scale-105 font-semibold shadow-lg"
@@ -49,7 +49,7 @@ export default function HeroSection() {
                                 </button>
                             </Link>
 
-                            <Link href="/dispatch/auth/login">
+                            <Link href="/auth/dispatch/register">
                                 <button
 
                                     className="px-6 py-3 border-2 border-secondary-0 text-secondary-0 hover:text-primary-500 hover:border-primary-500 rounded-full font-semibold bg-transparent"

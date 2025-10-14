@@ -9,8 +9,9 @@ export default function UserLayout() {
       }}
     >
       {/* Screens inside (user)/ */}
-      <Stack.Screen name="auth" />
+      {/* <Stack.Screen name="auth" /> */}
       <Stack.Screen name="main" />
+      {/* <Stack.Screen name="compliance" /> */}
     </Stack>
   );
 }

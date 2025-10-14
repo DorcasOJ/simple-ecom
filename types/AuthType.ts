@@ -27,6 +27,7 @@ export type SignupForm = {
 // }
 
 export type CreatePasswordProps = {
+  token: string;
   password: string;
   confirmPassword?: string;
 };
@@ -51,4 +52,8 @@ export type ConfirmPasswordInputProp = {
 
 export type ForgotPasswordProps = {
   email: string;
+};
+
+export type ResetPasswordProps = {
+  resetToken: string;
 };

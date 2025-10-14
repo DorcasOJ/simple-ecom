@@ -25,11 +25,11 @@ const Navbar = ({ page = undefined }: NavbarProps) => {
     return (
 
         <div className='w-full'>
-            <div className='fixed w-full top-0 z-30 '>
+            <div className='fixed w-full top-0 z-30 text-black dark:text-white'>
 
                 <div className={`w-full mx-auto text-black dark:text-white relative ${page === "landing" ? "px-4 sm:px-8 max-w-[2100px]" : "px-0 w-full"}`}>
 
-                    <div className={`w-full items-center justify-between flex p-5 ${page === "landing" ? "backdrop-blur-sm rounded-full bg-white/10 mt-3" : " rounded-0 text-base-content shadow shadow-gray-400 bg-base-100 dark:shadow-neutral-500"}  `}>
+                    <div className={`w-full items-center justify-between flex p-5 ${page === "landing" ? "backdrop-blur-sm rounded-full bg-white/10 mt-3" : " rounded-0  shadow bg-white dark:bg-black"}  `}>
 
                         <div className='flex items-end-safe gap-x-3  '>
 
@@ -76,19 +76,19 @@ const Navbar = ({ page = undefined }: NavbarProps) => {
                                     </div>
                                     <div className='flex items-center justify-center gap-x-2 sm:gap-x-5 pe-0 sm:pe-8'>
                                         <Link href={ROUTES.LANDING}>
-                                            <span className='btn btn-circle btn-ghost text-base-content'>
+                                            <span className=''>
                                                 <Bell size={"20px"} />
                                             </span>
                                         </Link>
 
                                         <Link href={ROUTES.LANDING}>
-                                            <span className='btn btn-circle btn-ghost text-base-content'>
+                                            <span className=' '>
                                                 <ShoppingCart size={"20px"} />
                                             </span>
                                         </Link>
 
                                         <Link href={ROUTES.LANDING}>
-                                            <span className='btn btn-circle btn-ghost text-base-content'>
+                                            <span className=' '>
                                                 <User size={"20px"} />
                                             </span>
                                         </Link>

@@ -6,34 +6,60 @@ import Container from '@components/Container';
 import ConfirmPasswordInputBox from '@components/inputBox/ConfirmPasswordInput';
 import PasswordInputBox from '@components/inputBox/PasswordInputBox';
 import SendButton from '@components/inputBox/SendButton';
+import { Box } from '@components/ui/box';
+import { Text } from '@components/ui/text';
 import { ErrorMessage } from '@hookform/error-message';
-import { Link } from 'expo-router';
+import { Link, useLocalSearchParams, useRouter } from 'expo-router';
 import { Info } from 'lucide-react-native';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { ScrollView } from 'react-native';
 import { toast } from 'sonner-native';
 
 
 
 const CreatePassword = () => {
+    // const route = useRoute();
+    // const { token } = route.params as { token: string }
+    // console.log(token, 'token')
+    const { token } = useLocalSearchParams<{ token: string }>();
+    console.log(token, 'token')
 
+    const [createPasswordError, SetCreatePasswordError] = useState("")
     const [loading, setLoading] = useState(false);
 
     const form = useForm<CreatePasswordProps>({
         defaultValues: {
+            token: "",
             password: "",
             confirmPassword: ""
         },
     });
-
+    const authUrl = process.env.EXPO_PUBLIC_API_AUTH_BASE_URL;
+    const router = useRouter()
     const handleCreatePassword = async (data: CreatePasswordProps) => {
         setLoading(true);
 
         try {
-            await new Promise((res) => setTimeout(res, 2000)); //data to backend
-            console.log(data); // remove
-            toast("Check Email for Reset Code");
+            const res = await fetch(`${authUrl}/reset-password`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+            console.log(res)
+            if (!res.ok) {
+                SetCreatePasswordError("An error occured. Kindly try again later")
+                setLoading(false);
+                // throw new Error("Signup failed");
+            } else {
+                const data = await res.json();
+                console.log(data)
+                SetCreatePasswordError("")
+                toast("Password reset successfully",)
+                router.replace("/main")
 
+                form.reset();
+            }
         } catch (error) {
             console.log(error);
         } finally {
@@ -43,25 +69,27 @@ const CreatePassword = () => {
         form.reset();
     };
     return (
-        <div className='w-full bg-white dark:bg-black'>
+        <ScrollView style={{ $$css: true, _: 'w-full bg-white dark:bg-black' }}>
             {/* <Navbar page='auth' /> */}
             <Container>
-                <div className="sm:min-h-[800px] h-screen mx-auto sm:px-6 7xl:px-0 py-20 sm:py-14 z-10 relative flex flex-row items-center justify-center">
+                <Box className=" min-h-screen max-w-3xl mx-auto  px-6 sm:px-0 py-20 sm:py-14 z-10 relative flex flex-row items-center justify-center ">
 
-                    <div className='w-full h-full flex flex-row-reverse items-center justify-center  rounded-2xl '>
-                        <div className='lg:flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-2xl h-full sm:px-6 max-w-xl lg:shadow-sm shadow-amber-50/50'>
+                    <Box className='w-full h-full flex flex-row-reverse items-center justify-center  rounded-2xl '>
+                        <Box className='flex-1 flex flex-col gap-y-6 items-center justify-center rounded-2xl lg:rounded-2xl h-full sm:px-6  sm:shadow-md  shadow-secondary-300 dark:shadow-secondary-200/20 '>
 
                             <AuthLogo />
-                            <div className='text-xl font-["Sora"] text-base-content'> Create Password</div>
-                            <p className='text-sm text-base-content/50 text-center'>
+                            <Text size={'lg'} className='text-xl font-["Sora"] text-base-content'> Create Password</Text>
+                            <Text className='text-sm text-white/60 text-center max-w-lg'>
                                 Create a new password for your account. Ensure it's strong and secure.
-                            </p>
+                            </Text>
+
+                            {createPasswordError && <Text size={"sm"} className='text-error-0 text-center max-w-sm'>{createPasswordError}</Text>}
                             <form
                                 onSubmit={form.handleSubmit(handleCreatePassword)}
                                 className="w-[100%] max-w-lg space-y-4 "
                             >
 
-                                <div className='relative'>
+                                <Box className='relative'>
                                     <PasswordInputBox form={form}
 
                                     />
@@ -77,10 +105,10 @@ const CreatePassword = () => {
                                             </p>
                                         )}
                                     />
-                                </div>
+                                </Box>
 
 
-                                <div className='relative '>
+                                <Box className='relative '>
 
                                     <ConfirmPasswordInputBox form={form}
                                         password={`${form.watch('password')}`}
@@ -97,29 +125,29 @@ const CreatePassword = () => {
                                             </p>
                                         )}
                                     />
-                                </div>
+                                </Box>
 
 
                                 <SendButton actionWord='Get Reset Password Link' isLoading={loading} />
 
-                                <span className="flex justify-center ">
+                                <Box className="flex justify-center items-center ">
                                     <Link href={"/(user)/auth/login"}>
-                                        <span className='text-center text-sm text-base-content/50 hover:underline'>Go To Login</span>
+                                        <Text className='text-center text-sm text-white/50  hover:underline'>Go To Login</Text>
                                     </Link>
-                                </span>
+                                </Box>
 
                             </form>
-                        </div>
+                        </Box>
 
 
 
-                    </div>
+                    </Box>
 
-                </div>
+                </Box>
 
             </Container >
 
-        </div >
+        </ScrollView >
     )
 }
 
