@@ -1,7 +1,17 @@
 'use dom';
+import data from "@assets/data/shops.json";
+import storeData from "@assets/data/stores.json";
+import SearchBox from "@components/inputBox/SearchBox";
 import Navbar from "@components/layout/Navbar";
+import { Box } from "@components/ui/box";
+import { Text } from "@components/ui/text";
+import { VStack } from "@components/ui/vstack";
+import HomeRecentOrder from "@components/user/HomeRecentOrder";
+import ShopRow from "@components/user/ShopRow";
 import { useThemeContext } from "@hooks/ThemeContext";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Link } from "expo-router";
+import { MapPinXInside } from "lucide-react-native";
+import { ScrollView } from "react-native";
 
 const categories = [
     { id: "1", name: "Men", image: "https://via.placeholder.com/80x80?text=Men" },
@@ -23,101 +33,58 @@ export default function index() {
     const isDark = colorMode === "dark";
 
     return (
-        <View className={`flex-1 ${isDark ? "bg-black" : "bg-[#f6f8f7]"}`}>
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={{ paddingBottom: 100 }}
-            >
-                {/* Header */}
-                <View className="flex-row items-center justify-between px-5 pt-10 pb-4">
-                    {/* <View>
-                        <Text className={`text-lg ${isDark ? "text-gray-200" : "text-gray-700"}`}>Welcome back 👋</Text>
-                        <Text className={`text-2xl font-bold ${isDark ? "text-white" : "text-black"}`}>
-                            Shop Your Style
-                        </Text>
-                    </View> */}
-                    <Navbar page="auth" />
+        <Box className={`h-full w-full ${isDark ? "bg-black" : "bg-white"} pb-20`}>
+            <Navbar page="auth" />
 
-                    {/* <TouchableOpacity className="p-2 rounded-full bg-primary-0/40">
-                        <ShoppingCart size={22} color={isDark ? "white" : "black"} />
-                    </TouchableOpacity> */}
-                </View>
+            <ScrollView style={{ $$css: true, _: '' }}>
 
-                {/* Search Bar */}
-                {/* <View className="px-5">
-                    <View
-                        className={`flex-row items-center rounded-full px-4 py-2 ${isDark ? "bg-gray-800" : "bg-gray-100"
-                            }`}
-                    >
-                        <Search size={18} color={isDark ? "white" : "black"} />
-                        <TextInput
-                            placeholder="Search products..."
-                            placeholderTextColor={isDark ? "#aaa" : "#555"}
-                            className={`flex-1 ml-2 ${isDark ? "text-white" : "text-black"}`}
-                        />
-                    </View>
-                </View> */}
 
-                {/* Categories */}
-                <View className="mt-6">
-                    <Text className={`px-5 text-lg font-semibold ${isDark ? "text-white" : "text-black"}`}>
-                        Categories
-                    </Text>
-                    <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        className="mt-3 px-4"
-                    >
-                        {categories.map((cat) => (
-                            <TouchableOpacity
-                                key={cat.id}
-                                className={`items-center mx-2 p-3 rounded-2xl ${isDark ? "bg-gray-800" : "bg-white"
-                                    } shadow-sm`}
+
+                <Box className="w-full max-w-7xl mx-auto ">
+
+
+                    <Box className="pt-36 px-6 sm:mt-32 sm:pt-0 flex flex-col justify-center h-full w-full  ">
+                        <VStack space={'2xl'}>
+                            <Box className="w-full flex items-center justify-center"
                             >
-                                <Image
-                                    source={{ uri: cat.image }}
-                                    className="w-16 h-16 rounded-full mb-2"
-                                />
-                                <Text className={`${isDark ? "text-gray-200" : "text-gray-700"}`}>
-                                    {cat.name}
-                                </Text>
-                            </TouchableOpacity>
-                        ))}
-                    </ScrollView>
-                </View>
+                                <SearchBox />
+                            </Box>
 
-                {/* Products */}
-                <View className="mt-6 px-5">
-                    <Text className={`text-lg font-semibold ${isDark ? "text-white" : "text-black"}`}>
-                        Featured Products
-                    </Text>
+                            <Box className="h-24 sm:h-32 w-full bg-primary-0 rounded-lg flex items-end justify-end mb-5" >
 
-                    <View className="flex-row flex-wrap justify-between mt-4">
-                        {products.map((product) => (
-                            <TouchableOpacity
-                                key={product.id}
-                                className={`w-[48%] mb-4 rounded-2xl p-3 ${isDark ? "bg-gray-800" : "bg-white"
-                                    } shadow`}
-                            >
-                                <Image
-                                    source={{ uri: product.image }}
-                                    className="w-full h-40 rounded-xl"
-                                    resizeMode="cover"
-                                />
-                                <Text
-                                    className={`mt-2 text-base font-medium ${isDark ? "text-gray-100" : "text-gray-800"
-                                        }`}
-                                >
-                                    {product.name}
-                                </Text>
-                                <Text className={`mt-1 font-semibold text-primary-500`}>
-                                    ${product.price}
-                                </Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-                </View>
+                                <Box className="text-white text-xs flex items-center gap-x-1 p-3 flex-row">
+                                    <Text>
+                                        <MapPinXInside size={"15px"} />
+                                    </Text>
+                                    <Text size={'sm'} className="text-white/80">
+                                        Delivering to: 123 Main St, City,
+                                    </Text>
+                                    <Link href="/(user)/main" className="">Change</Link>
+                                </Box>
+                            </Box>
+
+                            <Box>
+                                <ShopRow data={data} title="Shop by Category" row={true} />
+                            </Box>
+
+                            <Box className="flex flex-col gap-4 mt-5 ">
+                                <Box className="flex-3">
+                                    <ShopRow data={storeData} title="Popular Stores" row={false} />
+                                </Box>
+
+                                <Box className="flex-1 mt-13">
+                                    <HomeRecentOrder />
+                                </Box>
+                            </Box>
+
+                        </VStack>
+
+                    </Box>
+
+                </Box >
+
             </ScrollView>
-        </View>
+        </Box >
+
     );
 }

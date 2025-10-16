@@ -15,7 +15,7 @@ import { Pressable, ScrollView } from 'react-native';
 
 
 const ForgotPassword = () => {
-    const { forgotPassword, buttonLoading, error, } = useAuth("user");
+    const { forgotPassword, buttonLoading, error, } = useAuth("dispatch");
 
     const router = useRouter()
 

@@ -9,7 +9,7 @@ export default function CustomerServiceLayout() {
       }}
     >
       {/* Screens inside (user)/ */}
-      <Stack.Screen name="auth" />
+      {/* <Stack.Screen name="auth" /> */}
       <Stack.Screen name="main" />
     </Stack>
   );

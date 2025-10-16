@@ -196,7 +196,7 @@ const Signup = () => {
 
                             <Box className=' flex flex-col items-center justify-center gap-3 text-xs' >
 
-                                <Link href={"/auth/dispatch/login"}>
+                                <Link href={"/auth/user/login"}>
                                     <Text className='text-center  hover:underline text-black dark:text-white' size={'sm'}>Have an account?  login</Text>
                                 </Link>
 
@@ -218,7 +218,7 @@ const Signup = () => {
                             {
                                 imgIsLoaded ?
                                     <Box className=' flex-col hidden items-center justify-center overflow-hidden lg:flex h-full rounded-r-2xl w-full'>
-                                        < Image source={require('../../../assets/images/auth/auth-side-img-1.png')} className='w-full h-full rouneded-r-2xl object-contain'
+                                        < Image source={require('../../../assets/images/auth/auth-side-img-1.png')} className='w-full h-full rouneded-r-2xl object-contain' alt=""
                                         />
                                     </Box>
                                     :

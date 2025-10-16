@@ -9,7 +9,7 @@ export default function AdminLayout() {
       }}
     >
       {/* Screens inside (user)/ */}
-      <Stack.Screen name="auth" />
+      {/* <Stack.Screen name="auth" /> */}
       <Stack.Screen name="main" />
     </Stack>
   );

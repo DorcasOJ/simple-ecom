@@ -22,7 +22,7 @@ import { LoginForm } from '../../../types/AuthType';
 
 
 const Login = () => {
-  const { login, buttonLoading, error, } = useAuth("user");
+  const { login, buttonLoading, error, } = useAuth("dispatch");
 
   // const [buttonLoading, setButtonLoading] = useState(false);
   // const [error, seterror] = useState("")

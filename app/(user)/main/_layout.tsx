@@ -3,10 +3,12 @@
 
 import Sidebar from "@components/Sidebar";
 import { Button, ButtonText } from "@components/ui/button";
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { useUser } from "@hooks/UserContext";
 import { Stack, Tabs } from "expo-router";
-import { Box, Home, Menu, ShoppingCartIcon, User } from "lucide-react-native";
+import { Menu, ShoppingCartIcon } from "lucide-react-native";
 import React from "react";
-import { Platform, useWindowDimensions, View } from "react-native";
+import { Platform, Text, useWindowDimensions, View } from "react-native";
 
 
 // export default function UserMainLayout() {
@@ -24,7 +26,7 @@ import { Platform, useWindowDimensions, View } from "react-native";
 
 export default function UserMainLayout() {
     const { width } = useWindowDimensions();
-
+    const { user } = useUser()
     // Detect if it's a small screen (like a phone)
     const isMobile = Platform.OS !== "web" || width < 768;
 
@@ -45,9 +47,10 @@ export default function UserMainLayout() {
                     name="index"
                     options={{
                         title: "Home",
-                        tabBarIcon: ({ color, size }) => (
+                        tabBarIcon: ({ color, focused }) => (
                             //   <Icon name="home" color={color} size={size} />
-                            <Home size={size} />
+                            <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
+
                         ),
                     }}
                 />
@@ -55,9 +58,9 @@ export default function UserMainLayout() {
                     name="profile"
                     options={{
                         title: "Profile",
-                        tabBarIcon: ({ color, size }) => (
-                            // <Icon name="user" color={color} size={size} />
-                            <User />
+                        tabBarIcon: ({ color, focused }) => (
+                            <Ionicons name={focused ? 'image' : 'image-outline'} color={color} size={24} />
+
                         ),
                     }}
                 />
@@ -65,9 +68,16 @@ export default function UserMainLayout() {
                     name="cart"
                     options={{
                         title: "Cart",
+                        // tabBarIcon: ({ color, focused }) => (
+                        //     <Ionicons name={focused ? 'cart-sharp' : 'cart-outline'} color={color} size={24} />
+
+                        // ),
                         tabBarIcon: ({ color, size }) => (
-                            // <Icon name="shopping-cart" color={color} size={size} />
-                            <ShoppingCartIcon size={size} />
+                            <ShoppingCartWithBadge
+                                count={user.cart.length}
+                                color={color}
+                                size={size}
+                            />
                         ),
                     }}
                 />
@@ -75,12 +85,19 @@ export default function UserMainLayout() {
                     name="product"
                     options={{
                         title: "Product",
-                        tabBarIcon: ({ color, size }) => (
-                            // <Icon name="box" color={color} size={size} />
-                            <Box size={size} />
+                        tabBarIcon: ({ color, focused }) => (
+                            <Ionicons name={focused ? 'cloud-circle-outline' : 'cloud-circle'} color={color} size={24} />
+
                         ),
                     }}
                 />
+
+
+                {/* Hidden Routes */}
+                <Tabs.Screen name="product/index" options={{ href: null, }} />
+                <Tabs.Screen name="wallet" options={{ href: null, }} />
+                <Tabs.Screen name="product/[id]" options={{ href: null }} />
+                <Tabs.Screen name="order" options={{ href: null }} />
             </Tabs>
         );
     }
@@ -93,10 +110,10 @@ export default function UserMainLayout() {
                 onPress={() => {
                     setShowDrawer(true);
                 }}
-                className="absolute left-0 z-40"
+                className="absolute top-8 right-0 z-40 bg-transparent p-2 me-3 hover:bg-transparent hover:border-primary-0 hover:border-dashed"
             >
                 <ButtonText>
-                    <Menu />
+                    <Menu className="text-black dark:text-white " />
                 </ButtonText>
             </Button>
             {/* Main content area */}
@@ -105,6 +122,8 @@ export default function UserMainLayout() {
                     <Stack.Screen name="index" />
                     <Stack.Screen name="profile" />
                     <Stack.Screen name="cart" />
+                    <Stack.Screen name="order" />
+                    <Stack.Screen name="wallet" />
                     <Stack.Screen name="product" />
                 </Stack>
             </View>
@@ -112,3 +131,35 @@ export default function UserMainLayout() {
     );
 
 }
+
+
+const ShoppingCartWithBadge = ({
+    count,
+    color,
+    size,
+}: {
+    count: number;
+    color: string;
+    size: number;
+}) => (
+    <View>
+        <ShoppingCartIcon color={color} size={size} />
+        {count > 0 && (
+            <View
+                style={{
+                    position: "absolute",
+                    right: -5,
+                    top: -3,
+                    backgroundColor: "red",
+                    borderRadius: 10,
+                    width: 16,
+                    height: 16,
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
+            >
+                <Text style={{ color: "white", fontSize: 10 }}>{count}</Text>
+            </View>
+        )}
+    </View>
+);

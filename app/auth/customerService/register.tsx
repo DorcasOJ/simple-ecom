@@ -218,7 +218,7 @@ const Signup = () => {
                             {
                                 imgIsLoaded ?
                                     <Box className=' flex-col hidden items-center justify-center overflow-hidden lg:flex h-full rounded-r-2xl w-full'>
-                                        < Image source={require('../../../assets/images/auth/auth-side-img-1.png')} className='w-full h-full rouneded-r-2xl object-contain'
+                                        < Image source={require('../../../assets/images/auth/auth-side-img-1.png')} className='w-full h-full rouneded-r-2xl object-contain' alt=""
                                         />
                                     </Box>
                                     :

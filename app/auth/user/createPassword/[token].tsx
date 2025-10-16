@@ -84,7 +84,7 @@ const CreatePassword = () => {
 
                             {error && <Text size={"sm"} className='text-error-0 text-center max-w-sm'>{error}</Text>}
 
-                            {form.watch("confirmPassword") && form.watch('password') !== form.watch("confirmPassword") && <Text size={"sm"} className='text-error-0 text-center max-w-sm'>Password does not match!</Text>}
+                            {form.watch("confirmPassword") && (form.watch('password') !== form.watch("confirmPassword")) && <Text size={"sm"} className='text-error-0 text-center max-w-sm'>Password does not match!</Text>}
                             <form
                                 onSubmit={form.handleSubmit(handleCreatePassword)}
                                 className="w-[100%] max-w-lg space-y-4 "

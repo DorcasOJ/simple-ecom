@@ -1,6 +1,8 @@
 {
   "extends": "expo/tsconfig.base",
+  "jsx": "react-jsx" ,
   "compilerOptions": {
+  
     "strict": true,
     "baseUrl": ".",
     "paths": {
@@ -22,9 +24,13 @@
       "@styles/*": [
         "styles/*"
       ],
+         "@store": [
+        "store/UserContext.ts"
+      ],
       "@/*": [
         "./*"
       ],
+     
       "@env": ["./.env"],
       "tailwind.config": [
         "./tailwind.config.js"

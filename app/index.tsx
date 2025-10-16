@@ -1,41 +1,34 @@
-'use dom';
-
+import { Box } from "@components/ui/box";
+import { useThemeContext } from "@hooks/ThemeContext";
 import "@styles/global.css";
-import { ScrollView } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import Landing from "./Landing";
 
 export default function index() {
+  // const userContext = useUser();
+  const { colorMode, toggleColorMode } = useThemeContext();
+
   return (
-    <ScrollView style={{
-      $$css: true, _: ' relative bg-secondary'
-    }}>
-
-      {/* <Image source={'https://images.unsplash.com/photo-1756244866467-f4682840070c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D'} style={{ $$css: true, _: "w-full h-full object-cover absolute inset-0 -z-10" }} /> */}
-
-      < Landing />
-      {/* <View style={{ $$css: true, _:items-center mt-12">
-      
-        <Image
-          source={{ uri: "https://via.placeholder.com/120x120.png?text=Logo" }}
-          style={{ $$css: true, _:w-24 h-24 mb-4 rounded-full"
+    <ScrollView
+      style={[
+        styles.scrollView,
+        { backgroundColor: colorMode === "dark" ? "#000" : "#fff" },
+      ]}
+      contentContainerStyle={styles.contentContainer}
+    >
+      <Box className="w-full h-full relative">
+        <Landing colorMode={colorMode} toggleColorMode={toggleColorMode}
         />
-        <Text style={{ $$css: true, _:text-3xl font-bold text-gray-900">SendMe E-commerce</Text>
-        <Text style={{ $$css: true, _:text-gray-600 text-center mt-2 mb-10">
-          Shop, Deliver, Manage — All in One Platform
-        </Text>
-      </View> */}
+      </Box>
 
-      {/* Call to Action Buttons */}
-      {/* <View style={{ $$css: true, _:gap-4">
-        <Button title="Shop Now" onPress={() => router.push("/(user)/auth/login")} />
-        <Button title="Dispatch Login" onPress={() => router.push("/dispatch/auth/login")} />
-        <Button title="Admin Login" onPress={() => router.push("/admin/auth/login")} />
-        <Button title="Customer Service" onPress={() => router.push("/customerService/auth/login")} />
-      </View> */}
-
-      {/* <View style={{ $$css: true, _: "mt - 12 items- center" }}>
-        <Text style={{ $$css: true, _: "text - gray - 500 text- sm" }}>© 2025 SendMe Technologies</Text>
-      </View > */}
-    </ScrollView >
+    </ScrollView>
   );
 }
+const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+  },
+  contentContainer: {
+    // padding: 16,
+  },
+});

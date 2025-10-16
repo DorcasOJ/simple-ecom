@@ -19,7 +19,7 @@ import { ScrollView } from 'react-native';
 
 const CreatePassword = () => {
     const { token } = useLocalSearchParams<{ token: string }>();
-    const { createPassword, buttonLoading, error, } = useAuth("user");
+    const { createPassword, buttonLoading, error, } = useAuth("dispatch");
 
     const form = useForm<CreatePasswordProps>({
         defaultValues: {

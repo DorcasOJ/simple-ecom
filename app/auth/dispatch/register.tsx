@@ -21,7 +21,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Signup = () => {
-    const { register, buttonLoading, error, } = useAuth("user");
+    const { register, buttonLoading, error, } = useAuth("dispatch");
 
 
     const imgIsLoaded = usePreloadAssets([require("@/assets/images/auth//auth-side-img-1.png"), require('@assets/images/auth/logo.png')])

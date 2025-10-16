@@ -1,4 +1,3 @@
-'use dom';
 
 import { Asset } from "expo-asset";
 import { useEffect, useState } from "react";

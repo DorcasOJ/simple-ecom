@@ -1,4 +1,4 @@
-'use dom';
+
 import {
     Accordion,
     AccordionContent,
@@ -10,17 +10,24 @@ import {
     AccordionTrigger,
 } from '@/components/ui/accordion';
 import { AddIcon, RemoveIcon } from '@/components/ui/icon';
+import { Box } from '@components/ui/box';
+import { Text } from '@components/ui/text';
 import "@styles/global.css";
+import { Platform } from 'react-native';
 
-export default function FAQ() {
+export default function FAQ({ textColor }: { textColor: string, }) {
     return (
-        <div className='w-full h-full flex items-center justify-center flex-col gap-y-4'>
-
-            <div className='text-lg font-["Sora"]'>
+        <Box style={{ display: "flex", flexDirection: "column", gap: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}>
+          
+            <Text style={{
+                fontFamily: "Sora-SemiBold",
+                fontWeight: Platform.OS === "web" ? 900 : 700,
+                color: textColor,
+            }}>
                 FAQ
-            </div>
+            </Text>
 
-            <Accordion className="m-5 w-[80%] max-w-[640px] bg-transparent">
+            <Accordion style={{ width: "80%", background: "transparent"  }}>
                 <AccordionItem value="item-1" className="rounded-lg bg-transparent border-primary-0">
                     <AccordionHeader>
                         <AccordionTrigger className="focus:web:rounded-lg border-primary-0">
@@ -75,6 +82,6 @@ export default function FAQ() {
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
-        </div >
+        </Box >
     );
 }

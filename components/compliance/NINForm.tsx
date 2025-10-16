@@ -9,24 +9,35 @@ import { VStack } from "@components/ui/vstack";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 
+type NINFormProps = {
+    role: string
+}
 
-export default function NINForm() {
-    const [nin, setNIN] = useState("")
+export default function NINForm({ role }: NINFormProps) {
+    const [ninNo, setNINNo] = useState("")
+    const [isVerified, setIsVerified] = useState(false);
 
     const [buttonLoading, setButtonLoading] = useState(false)
     const router = useRouter()
 
+
+
     const handleSubmit = () => {
 
 
-        alert(`Success, NIN ${nin} submitted successfully`);
+        alert(`Success, NIN ${ninNo} submitted successfully`);
+
+        setIsVerified(true)
 
     }
 
     const handleRoute = () => {
-        // if (nin.length === 14) { // if nin is verified
-        setButtonLoading(true)
-        router.replace('/compliance/documents')
+        if (isVerified) {
+            setButtonLoading(true);
+            router.push(`/compliance/${role}/documents`);
+        } else {
+            alert("Please verify your NIN before continuing.");
+        }
 
 
     }
@@ -45,38 +56,63 @@ export default function NINForm() {
                         variant="outline"
                         size="md"
                         isRequired={true}
-
+                        editable={!isVerified}
                         className=""
 
 
                     >
                         <InputField
-                            onChangeText={setNIN}
-                            value={nin} keyboardType="number-pad"
+                            onChangeText={setNINNo}
+                            value={ninNo} keyboardType="number-pad"
 
                             placeholder="Enter NIN here..."
                         />
                     </Input>
 
-                    <Button className="" onPress={handleSubmit}>
+                    {/* <Button className="" onPress={handleSubmit}>
                         <ButtonText>Submit NIN</ButtonText>
-                    </Button>
+                    </Button> */}
+                    {!isVerified ? <Button
+                        className={`rounded-lg ${isVerified ? "bg-green-600" : ""}`}
+                        onPress={handleSubmit}
+                        disabled={isVerified}
+                    >
+                        <ButtonText>
+                            {isVerified ? "NIN Verified ✅" : "Submit NIN"}
+                        </ButtonText>
+                    </Button> : ""}
 
                     <Box className="flex items-end justify-end my-2">
                         <>
 
-                            <Button className="rounded-lg" variant={'outline'} disabled={buttonLoading} onPress={handleRoute}>
+                            {/* <Button className="rounded-lg" variant={'outline'} disabled={buttonLoading} onPress={handleRoute}>
                                 <ButtonText className="flex items-center justify-center"> {
                                     buttonLoading ? <ButtonSpinner color="gray" /> :
                                         "Next: Upload Documents"
                                 }</ButtonText>
-                            </Button>
+                            </Button> */}
+                            <Box className="flex items-end justify-end my-2">
+                                <Button
+                                    className="rounded-lg"
+                                    variant={"outline"}
+                                    disabled={buttonLoading}
+                                    onPress={handleRoute}
+                                >
+                                    <ButtonText className="flex items-center justify-center">
+                                        {buttonLoading ? (
+                                            <ButtonSpinner color="gray" />
+                                        ) : (
+                                            "Next: Verify NIN →"
+                                        )}
+                                    </ButtonText>
+                                </Button>
+                            </Box>
                         </>
                     </Box>
 
                 </VStack>
-            </Box>
+            </Box >
 
-        </Container>
+        </Container >
     )
 }

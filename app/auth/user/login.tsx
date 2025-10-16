@@ -32,8 +32,8 @@ const Login = () => {
 
   const form = useForm<LoginForm>({
     defaultValues: {
-      email: "email@email.com",
-      password: "Password@1",
+      email: "",
+      password: "",
     },
   });
   const handleLogin = async (data: LoginForm) => {

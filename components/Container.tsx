@@ -1,17 +1,17 @@
 
 
-import { useThemeContext } from "@hooks/ThemeContext";
 import "@styles/global.css";
-import { ScrollView, View } from "react-native";
+import React  from "react";
+import { ScrollView } from "react-native";
 import { Box } from "./ui/box";
 
-const Container = ({ children, variant }: { children: React.ReactNode, variant?: 'landing' | 'small' }) => {
-    const { colorMode } = useThemeContext();
+const Container = ({ children, variant, colorMode = 'light' }: { children: React.ReactNode, variant?: 'landing' | 'small', colorMode?: 'dark' | 'light' }) => {
+    // const { colorMode } = useThemeContext();
 
     if (!variant) {
         return (
 
-            <ScrollView style={{ $$css: true, _: `w-full  text-black dark:text-white relative ${colorMode === "dark" ? "bg-black" : " bg- white"}` }}>
+            <ScrollView style={{ $$css: true, _: `w-full  text-black dark:text-white relative ${colorMode === "dark" ? "bg-black" : " bg-white"}` }}>
                 <Box className='w-full max-w-[1900px] mx-auto px-7 sm:px-9' >
                     {children}
 
@@ -24,15 +24,15 @@ const Container = ({ children, variant }: { children: React.ReactNode, variant?:
 
     if (variant === "landing") {
         return (
-            <View style={{ $$css: true, _: "w-full px-7 sm:px-9 max-w-[1900px] mx-auto text-black dark:text-white relative " }}>
+            <Box className="w-full px-7 sm:px-9 max-w-[1900px] mx-auto text-black dark:text-white relative " >
                 {children}
-            </View>
+            </Box>
 
         )
     }
 
     return (
-        <ScrollView style={{ $$css: true, _: `w-full  text-black dark:text-white relative ${colorMode === "dark" ? "bg-black" : " bg- white"}` }}>
+        <ScrollView style={{ $$css: true, _: `w-full text-black dark:text-white relative ${colorMode === "dark" ? "bg-black" : " bg- white"}` }}>
             <Box className='w-full max-w-[700px] mx-auto px-7 sm:px-9' >
                 {children}
 
