@@ -3,5 +3,10 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#382C12",
+    "titleBar.activeBackground": "#4E3E1A",
+    "titleBar.activeForeground": "#FDFBF7"
   }
 }
