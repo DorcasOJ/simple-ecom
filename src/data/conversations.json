@@ -1,23 +1,23 @@
- [
-    {
-      "id": "#12345",
-      "title": "Order #12345 Issue",
-      "message": "Issue with missing items has been resolved. Refund processed.",
-      "agent": "Sarah M.",
-      "time": "2h ago",
-    },
-    {
-      "id": "#12346",
-      "title": "Delivery Question",
-      "message": "Delivery address updated successfully for future orders.",
-      "agent": "Mike T.",
-      "time": "1 day ago",
-    },
-    {
-      "id": "#12347",
-      "title": "Payment Problem",
-      "message": "Payment method verification completed.",
-      "agent": "Lisa K.",
-      "time": "3 days ago",
-    },
-  ];
+[
+  {
+    "id": "#12345",
+    "title": "Order #12345 Issue",
+    "message": "Issue with missing items has been resolved. Refund processed.",
+    "agent": "Sarah M.",
+    "time": "2h ago"
+  },
+  {
+    "id": "#12346",
+    "title": "Delivery Question",
+    "message": "Delivery address updated successfully for future orders.",
+    "agent": "Mike T.",
+    "time": "1 day ago"
+  },
+  {
+    "id": "#12347",
+    "title": "Payment Problem",
+    "message": "Payment method verification completed.",
+    "agent": "Lisa K.",
+    "time": "3 days ago"
+  }
+]

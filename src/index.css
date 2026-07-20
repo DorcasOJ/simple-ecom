@@ -1,10 +1,9 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Cookie&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Cookie&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap");
 
 @import "tailwindcss";
-@plugin "daisyui" ;
+@plugin "daisyui";
 /* {
    themes: light --default, dark --prefersdark;
  } */
@@ -48,7 +47,6 @@
   --noise: 1;
 } */
 
-
 /* @plugin "daisyui/theme" {
   name: "dark";
   default: false;
@@ -84,8 +82,6 @@
   --noise: 1;
 } */
 
-
-
 @plugin "daisyui/theme" {
   name: "dark";
   default: false;
@@ -96,15 +92,26 @@
   --color-base-300: oklch(21.15% 0.012 254.09);
   --color-base-content: oklch(97.807% 0.029 256.847);
   /* --color-base-content: white; */
-  --color-primary: #132c1f;
+  /* --color-primary: #132c1f;
   --color-primary-content: oklch(96% 0.018 272.314);
-  /* --color-secondary: oklch(68% 0.162 75.834);  */
-  --color-secondary: #8c8b61; 
+  --color-secondary: #8c8b61;
   --color-secondary-content: oklch(94% 0.028 342.258);
-  --color-accent: #8C8B61CC;
+  --color-accent: #8c8b61cc;
   --color-accent-content: oklch(38% 0.063 188.416);
   --color-neutral: oklch(14% 0.005 285.823);
-  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-neutral-content: oklch(92% 0.004 286.32); */
+
+  --color-primary: #1d4ed8;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #8c8b61;
+  --color-secondary-content: #f9fafb;
+
+  --color-accent: #60a5fa;
+  --color-accent-content: #0f172a;
+
+  --color-neutral: #111827;
+  --color-neutral-content: #f9fafb;
   --color-info: oklch(74% 0.16 232.661);
   --color-info-content: oklch(29% 0.066 243.157);
   --color-success: oklch(76% 0.177 163.223);
@@ -133,14 +140,23 @@
   --color-base-300: oklch(92% 0.004 286.32);
   --color-base-content: oklch(21% 0.006 285.885);
   /* --color-base-content: :black; */
-  --color-primary: #1c3628;
+  /* --color-primary: #1c3628;
   --color-primary-content: oklch(100% 0 0);
   --color-secondary: #8c8b61;
   --color-secondary-content: oklch(100% 0 0);
   --color-accent: #8C8B61CC;
   --color-accent-content: oklch(27% 0.046 192.524);
   --color-neutral: oklch(44% 0.017 285.786);
-  --color-neutral-content: oklch(98% 0 0);
+  --color-neutral-content: oklch(98% 0 0); */
+
+  --color-primary: #1e3a8a;
+  --color-primary-content: #ffffff;
+  --color-secondary: #8c8b61;
+  --color-secondary-content: #ffffff;
+  --color-accent: #3b82f6;
+  --color-accent-content: #ffffff;
+  --color-neutral: #374151;
+  --color-neutral-content: #ffffff;
   --color-info: oklch(78% 0.154 211.53);
   --color-info-content: oklch(30% 0.056 229.695);
   --color-success: oklch(79% 0.209 151.711);
@@ -159,22 +175,17 @@
   --noise: 1;
 }
 
-
-
-
 @layer base {
- body {
-  color: var(--color-base-content);
- font-family: 'Roboto', 'Lato', Courier, monospace;
-  font-style: normal;
-  box-sizing: border-box;
+  body {
+    color: var(--color-base-content);
+    font-family: "Roboto", "Lato", Courier, monospace;
+    font-style: normal;
+    box-sizing: border-box;
+  }
 
- }
-
- .color {
-  color: #705d01;
-  color: #132c1f; /*#1C3628F0*/
-  color: #8c8b61 ; /* #ECCC8CCC*/
- }
-
+  .color {
+    color: #705d01;
+    color: #132c1f; /*#1C3628F0*/
+    color: #8c8b61; /* #ECCC8CCC*/
+  }
 }
