@@ -24,7 +24,6 @@ This project was built to strengthen my understanding of:
 - JavaScript fundamentals
 - DOM manipulation
 - Event handling
-- State management
 - Responsive web design
 - Building interactive user interfaces
 
