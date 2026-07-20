@@ -8,13 +8,13 @@ export type FeaturedObj = {
 };
 
 export type ShopCardProp = {
-  link: string;
+  link?: string;
   image: string;
   category?: string;
   storeName?: string;
   rating?: number;
   timeRange?: string;
-  title?: string;
+  title?: string | undefined;
 
   // double?: boolean;
 };

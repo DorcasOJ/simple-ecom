@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import useSystemTheme from '../../hook/useSystemTheme';
-import { Moon, Sun } from 'lucide-react';
+// import React, { useEffect, useState } from 'react'
+import useSystemTheme from "../../hook/useSystemTheme";
+import { Moon, Sun } from "lucide-react";
 
 const ThemeButton = () => {
-
-  const { theme, setTheme } = useSystemTheme()
+  const { theme, setTheme } = useSystemTheme();
   // const [darkTheme, setDarkTheme] = useState(false);
 
   // function to apply theme
@@ -16,10 +15,8 @@ const ThemeButton = () => {
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
-
-  }
+  };
   return (
-
     // <label className="swap swap-rotate ml-3">
     //   {/* this hidden checkbox controls the state */}
     //   <input
@@ -51,15 +48,12 @@ const ThemeButton = () => {
 
     <button
       onClick={toggleTheme}
-      className='btn btn-ghost btn-circle '
-      aria-label='Toggle theme'
+      className="btn btn-ghost btn-circle "
+      aria-label="Toggle theme"
     >
-      {
-        theme === "dark" ? <Sun /> : <Moon />
-      }
+      {theme === "dark" ? <Sun /> : <Moon />}
     </button>
+  );
+};
 
-  )
-}
-
-export default ThemeButton
+export default ThemeButton;
