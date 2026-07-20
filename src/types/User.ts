@@ -1,6 +1,6 @@
 export type FeaturedObj = {
   data: {
-    title: string;
+    title?: string | undefined;
     image: string;
     link?: string;
   };

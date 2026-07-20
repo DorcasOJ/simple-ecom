@@ -10,7 +10,7 @@ import {
 // import conversations from "../../data/conversations.json"
 // import conversations from "@src/data/conversations.json"
 
-const CustomerSupport = () => {
+const CustomerSupport = async () => {
   const quickHelp = [
     {
       icon: HelpCircle,
@@ -44,7 +44,7 @@ const CustomerSupport = () => {
       desc: "Share feedback about your experience",
     },
   ];
-  const conversations = fetch("/src/data/conversations.json")
+  const conversations = await fetch("/src/data/conversations.json")
     .then((res) => res.json())
     .then((data) => data);
   return (
@@ -88,7 +88,7 @@ const CustomerSupport = () => {
               </h3>
 
               <div className="space-y-3">
-                {conversations.map((chat, i) => (
+                {conversations.map((chat: any, i: number) => (
                   <div
                     key={i}
                     className="border rounded-lg bg-white p-4 shadow-sm hover:shadow-md transition"
