@@ -1,36 +1,38 @@
-# Ecom JS Project
+# Simple Ecom
 
-A responsive e-commerce web application built with JavaScript that simulates a modern online shopping experience. The application allows users to browse products, view product details, add items to a shopping cart, and manage their selections through a clean and intuitive interface.
+Simple Ecom is a lightweight e-commerce application that demonstrates the core functionality of an online shopping platform. The project focuses on creating a clean shopping experience while applying modern frontend development principles.
 
 ## Features
 
-- Product listing
+- Browse products
 - Product details
 - Shopping cart
-- Responsive design
-- Dynamic DOM manipulation
-- Local storage support
+- Responsive layout
+- Interactive UI
 
 ## Tech Stack
 
-- HTML5
-- CSS3
+- React.js
 - JavaScript (ES6+)
+- CSS3
+- HTML5
 
 ## Learning Objectives
 
-This project was built to strengthen my understanding of:
+This project was built to improve my knowledge of:
 
-- JavaScript fundamentals
-- DOM manipulation
+- React fundamentals
+- Component-based architecture
+- State management
 - Event handling
-- Responsive web design
-- Building interactive user interfaces
+- Responsive design
+- Building reusable UI components
 
 ## Future Improvements
 
-- Product search
-- Product filtering and sorting
-- User authentication
-- Checkout flow
-- Backend integration
+- Product categories
+- Authentication
+- Wishlist
+- Payment integration
+- Backend API
+- Order management
